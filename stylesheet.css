@@ -1,0 +1,83 @@
+
+#education{
+  grid-area: education;
+
+  }
+
+#header{
+  grid-area:header;
+}
+
+#skills{
+  grid-area: skills;
+}
+#contact {
+  grid-area: contact;
+
+}
+
+#experience{
+  grid-area: experience;
+}
+
+#accomplishments{
+  grid-area: accomplishments;
+}
+
+#links{
+  grid-area:links;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 450px;
+  grid-gap: 10px;
+  grid-template-areas:
+           "header education"
+           "contact experience"
+           "skills experience"
+           "accomplishments experience";
+}
+
+em {
+  background-color: #414280;
+  color: white;
+  font-style: normal;
+  padding: 5px;
+}
+
+
+
+header {
+  font-style: italic;
+  padding-left: 10px;
+}
+
+img{
+  max-width: 200px;
+  max-height:200px;
+}
+
+h4{
+  font-style: italic;
+}
+
+
+
+
+.column1{
+    background-color:#A8A6D3;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+
+.column2 {
+  min-width: 50px;
+  background-color: white;
+  padding-top: 10px;
+  padding-left: 20px;
+  margin-right: 20px;
+}
