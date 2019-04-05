@@ -93,19 +93,7 @@ h5{
 #experience h4{
   line-height: 5px;
 }
-.location{
-  display: block;
-  font-style: italic;
-  color: black;
-  float: right;
-  overflow:auto;
-  margin: 0;
-  padding: 5px;
-  font-family: "Nanum gothic", "arial", sans-serif;
-  font-size: 12px;
-  font-weight: normal;
-  line-height: 4px;
-}
+
 
 #education p{
   line-height: 15px;
@@ -202,4 +190,18 @@ nav a:active{
   padding-left: 20px;
   margin-right: 20px;
 
+}
+
+.location{
+  display: block;
+  font-style: italic;
+  color: black;
+  float: right;
+  overflow:auto;
+  margin: 0;
+  padding: 5px;
+  font-family: "Nanum gothic", "arial", sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 4px;
 }
