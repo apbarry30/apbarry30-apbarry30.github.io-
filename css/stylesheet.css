@@ -44,6 +44,7 @@
            "skills experience"
            "accomplishments experience"
            "links experience";
+    max-width: 940px;
 }
 
 p{
@@ -60,7 +61,12 @@ li{
 
 
 h1{
-margin-left: 10px;
+font-family: "Source Sans pro" , "arial", sans-serif;
+font-style: italic;
+margin-left: 70px;
+color: #414280;
+
+font-size: 18px;
 }
 
 h2 {
@@ -72,11 +78,13 @@ h2 {
 
 h3{
   color:#414280;
-  padding-top: 15px;
-  margin-bottom: 10px;
+  padding-top: 10px;
+  margin: 0;
   }
 
 h4{
+  padding-top: 10px;
+  color:#414280;
   margin: 0;
 }
 
@@ -85,26 +93,31 @@ h5{
   margin-left: 0;
 }
 
-#experience p{
-font-style: italic;
-float:right;
-padding-left: 10px;
-margin: 0;
-
-
 }
 #experience h4{
   line-height: 5px;
 }
-#education h4{
+.location{
+  display: block;
+  font-style: italic;
+  color: black;
   float: right;
   overflow:auto;
+  margin: 0;
+  padding: 5px;
+  font-size: 12px;
+  font-weight: normal;
 }
 
 #education p{
   line-height: 15px;
   margin:4px;
 
+}
+
+#experience li{
+margin-right: 10px;
+max-width: 500px;
 }
 
 header {
@@ -148,20 +161,28 @@ nav a{
   padding: 20px;
 
 }
+nav a:default{
+color: #414280;
+}
 
 nav a:hover {
+  color: white;
   text-decoration: underline;
   background-color: #414280;
+}
+
+nav a:visited{
+  color: white;
+}
+
+nav a:active{
+  color: #414280;
 }
 
 #links a{
   text-decoration: none;
 }
 
-#links li{
-  color: #414280;
-  list-style-type: none;
-}
 
 #links li:hover {
   text-decoration: underline;
@@ -175,7 +196,6 @@ nav a:hover {
     background-color:#A8A6D3;
     padding-left: 20px;
     padding-right: 20px;
-    max-width: 940px;
 }
 
 .column2 {
@@ -183,4 +203,5 @@ nav a:hover {
   background-color: white;
   padding-left: 20px;
   margin-right: 20px;
+
 }
