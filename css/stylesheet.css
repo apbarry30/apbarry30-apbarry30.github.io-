@@ -45,6 +45,7 @@
            "accomplishments experience"
            "links experience";
     max-width: 940px;
+    border: solid 4px #414280;
 }
 
 
@@ -58,11 +59,11 @@ li{
 
 
 h1{
+color: #414280;
 font-family: "Source Sans pro" , "arial", sans-serif;
 font-style: italic;
-margin-left: 70px;
-color: #414280;
-font-size: 18px;
+font-size: 30px;
+margin-left: 35px;
 }
 
 h2 {
@@ -70,6 +71,7 @@ h2 {
   color: white;
   font-style: normal;
   padding: 5px;
+  font-size: 20px;
 }
 
 h3{
@@ -79,7 +81,7 @@ h3{
   }
 
 h4{
-  padding-top: 10px;
+  padding-top: 2px;
   color:#414280;
   margin: 0;
 }
