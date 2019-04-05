@@ -47,11 +47,8 @@
     max-width: 940px;
 }
 
-p{
-  font-family: "Nanum gothic", "arial", sans-serif;
-  font-size: 14px;
-  line-height: 4px;
-}
+
+
 
 li{
   font-family: "Nanum gothic", "arial", sans-serif;
@@ -65,7 +62,6 @@ font-family: "Source Sans pro" , "arial", sans-serif;
 font-style: italic;
 margin-left: 70px;
 color: #414280;
-
 font-size: 18px;
 }
 
@@ -105,8 +101,10 @@ h5{
   overflow:auto;
   margin: 0;
   padding: 5px;
+  font-family: "Nanum gothic", "arial", sans-serif;
   font-size: 12px;
   font-weight: normal;
+  line-height: 4px;
 }
 
 #education p{
