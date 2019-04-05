@@ -178,6 +178,9 @@ nav a:active{
  color: blue;
 }
 
+#contact p{
+  margin: 0;
+}
 .column1{
     background-color:#A8A6D3;
     padding-left: 20px;
@@ -200,7 +203,7 @@ nav a:active{
   overflow:auto;
   margin: 0;
   padding: 5px;
-  font-family: "Nanum gothic", "arial", sans-serif;
+
   font-size: 12px;
   font-weight: normal;
   line-height: 4px;
