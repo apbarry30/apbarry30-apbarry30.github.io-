@@ -1,0 +1,195 @@
+
+#intro{
+  grid-area:intro;
+  padding: 30px;
+}
+#mainphoto{
+  grid-area:mainphoto;
+}
+#header{
+  grid-area:header;
+  margin: 0px auto;
+}
+
+#navi{
+  grid-area:navi;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: repeat(1fr);
+
+  grid-gap: 10px;
+  grid-template-areas:
+           "navi navi navi"
+           "header header header"
+           "intro intro mainphoto"
+           ;
+
+  max-width: 940px;
+  border: solid 4px #414280;
+  margin: 0px auto;
+}
+
+
+
+
+li{
+  font-family: "Nanum gothic", "arial", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+
+h1{
+color: #414280;
+font-family: "Source Sans pro" , "arial", sans-serif;
+font-style: italic;
+font-size: 30px;
+}
+
+h2 {
+  background-color: #414280;
+  color: white;
+  font-style: normal;
+  padding: 5px;
+  font-size: 20px;
+}
+
+h3{
+  color:#414280;
+  padding-top: 10px;
+  margin: 0;
+  }
+
+h4{
+  padding-top: 2px;
+  color:#414280;
+  margin: 0;
+}
+
+h5{
+  margin: 10px;
+  margin-left: 0;
+}
+
+}
+#experience h4{
+  line-height: 5px;
+}
+
+
+#education p{
+  line-height: 15px;
+  margin:4px;
+
+}
+
+#experience li{
+margin-right: 10px;
+max-width: 500px;
+}
+
+header {
+  font-style: italic;
+}
+
+img{
+  display: block;
+  margin: 0px auto;
+  max-width: 200px;
+  max-height:200px;
+  border: solid 10px #414280;
+  margin: 0px auto;
+}
+
+
+nav {
+background-color: #A8A6D3;
+font-weight: bold;
+width: 100%;
+}
+
+nav ol{
+list-style-type: none;
+padding-left: 0;
+margin: 0;
+}
+
+nav li{
+  display: inline-block;
+  margin:0;
+  line-height: 15px;
+}
+
+nav a{
+  color: #414280;
+  background-color: #A8A6D3;
+  display: inline-block;
+  text-decoration: none;
+  line-height: 15px;
+  padding: 20px;
+
+}
+nav a:default{
+color: #414280;
+}
+
+nav a:hover {
+  color: white;
+  text-decoration: underline;
+  background-color: #414280;
+}
+
+nav a:visited{
+  color: white;
+}
+
+nav a:active{
+  color: #414280;
+}
+
+/* #links a{
+  text-decoration: none;
+}
+
+
+#links li:hover {
+  text-decoration: underline;
+}
+
+#links li:visited {
+ color: blue;
+}
+
+#contact p{
+  margin: 0;
+}
+.column1{
+    background-color:#A8A6D3;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.column2 {
+  min-width: 50px;
+  background-color: white;
+  padding-left: 20px;
+  margin-right: 20px;
+
+}
+
+.location{
+  display: block;
+  font-style: italic;
+  color: black;
+  float: right;
+  overflow:auto;
+  margin: 0;
+  padding: 5px;
+
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 4px;
+} */
