@@ -8,8 +8,13 @@
   grid-area: mainphoto;
   margin-top:25px;
   margin-right:20px;
-
 }
+#mainphoto img{
+  width: 230px;
+  margin-top: 30px;
+  margin-right:60px;
+}
+
 #aboutme{
   grid-area:aboutme;
   padding-left:15px;
@@ -34,6 +39,7 @@
   margin-top: 0;
   margin-left:20px;
   padding:20px;
+  padding-right:55px;
   line-height: 20px;
 }
 #ex_div{
@@ -140,7 +146,9 @@
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-areas:
            "aboutme aboutme aboutme"
-           "skills experience experience"
+           "skills experience contact"
+           "skills experience contact"
+           "skills experience contact"
           ;
         }
 
@@ -238,8 +246,10 @@ h2 {
 
 h3{
   color:rgb(139,0,0);
-  padding: 10px;
-  margin:0;
+  padding-left:5px;
+  padding-bottom:5px;
+  margin: 0px;
+  margin-top:15px;
   }
 
 em{
@@ -269,6 +279,11 @@ em{
 #ipad{
   grid-area:ipad;
 }
+#classProjects h2{
+margin-left:0;
+padding-left: 0px;
+}
+
 #othermedia{
   grid-area:othermedia;
 }
@@ -278,7 +293,7 @@ em{
   /* background-color: #A8A6D3; */
   /* border:solid 2px #A8A6D3; */
   margin:0 auto;
-  margin:top:20px;
+  margin-top:20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
@@ -289,25 +304,43 @@ em{
 #personal_content #othermedia{
   margin-left:20px;
 }
-#othermedia h2{
-  margin-left:10px;
+#othermedia, #infographics h2{
+  margin-left:20px;
 }
 #infographics{
   grid-area:infographics;
 }
+
+#cat{
+  margin-left: 30px;
+}
+#drake img{
+  width:385px;
+}
 #classProjects{
   grid-area:classProjects;
 }
+#flowers{
+  margin-left:30px
+}
 #tiger{
-  margin-left:25px;
+  max-width: 375px;
+  margin-left:30px;
 }
 #design_content{
   margin:0 auto;
-  margin:top:20px;
+  margin-top:20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
   "classProjects infographics"
   "classProjects infographics";
+}
+/* #designpage nav{
+  line-height:19.2px;
+} */
 
+#kendrick img{
+  margin-left: 20px;
+  padding-left:0;
 }
