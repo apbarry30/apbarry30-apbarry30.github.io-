@@ -1,0 +1,23 @@
+// Universal Button Styles
+
+
+// Button Container
+.btn-wrap {
+  @include flexbox();
+  margin-top: 20px;
+}
+
+// Default Button
+.btn {
+  padding: 15px 30px;
+  font-family: $fontMain;
+  font-weight: $bold;
+  text-align: center;
+  border: 2px solid transparent;
+  background: $primary;
+  color: $white;
+  @include hover-transition();
+  &:hover {
+    background: $accent;
+  }
+}

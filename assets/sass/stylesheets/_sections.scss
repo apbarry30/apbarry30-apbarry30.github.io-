@@ -1,0 +1,16 @@
+// Reusable Sections Styles
+
+// Basic Hero Section
+section.basic-hero-section {
+  height: 30vw;
+  min-height: 300px;
+  h1 {
+    text-align: center;
+    font-family: $fontBody;
+    font-size: 52px;
+    line-height: 68px;
+    letter-spacing: 4.39px;
+    font-weight: $medium;
+    text-transform: uppercase;
+  }
+}

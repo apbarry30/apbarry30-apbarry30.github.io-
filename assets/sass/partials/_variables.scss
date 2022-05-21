@@ -1,0 +1,53 @@
+/*** DEBUG ****/
+// Set true for debugging - this will show the media query breakpoints //
+$debug: true;
+
+/*COLORS*/
+$black: #000;
+$white: #fff;
+$offWhite: #F0F4F7;
+$fontColor: #333;
+$gray: #ccc;
+$darkGray:  #302f31;
+$medGray:  #626363;
+$textGray: #696767;
+$lightGray: #e5e5e5;
+$headerColor: $white;
+$footerColor: $gray;
+
+$errorColor: #FF4200;
+
+// Theme Colors
+$accent: #ff8a00;
+$accentColor: $accent;
+$primary: #000000;
+
+/* SIZES */
+$container: 1300px;
+
+/* TYPOGRAPHY */
+$fontMain: 'Outfit', sans-serif;
+$fontMainSans:  'Outfit', sans-serif;
+$fontBody: 'Outfit', sans-serif;
+
+$fontHeader: $fontMain;
+
+$extraLight: 100;
+$light: 300;
+$regular: 400;
+$medium: 500;
+$bold: 700;
+
+$letterspace: -0.5px;
+$lineheight : 25px;
+
+$btn-border-radius: 5px;
+
+/* MEDIA QUERY BREAKPOINTS */
+
+$breakpoint-desktop-large : 1920px;
+$breakpoint-desktop-med : 1440px;
+$breakpoint-desktop-small : 1060px;
+$breakpoint-tablet-large : 991px;
+$breakpoint-tablet : 785px;
+$breakpoint-phone : 480px;

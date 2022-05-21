@@ -1,0 +1,151 @@
+/*!
+ * Copyright (c) 2019. OGK Creative
+ */
+
+// Sass Settings,  Variables and Mixins
+@import  "../partials/settings","../partials/variables", "../partials/mixins";
+
+body.wp-admin{
+  .acf-input-wrap input, .editor-post-title__block .editor-post-title__input, .editor-rich-text, .edit-post-visual-editor, .edit-post-visual-editor input[type=text].editor-default-block-appender__content, .edit-post-visual-editor p {
+    font-family:$fontMain;
+  }
+  .acf-input-wrap input, .editor-post-title__block .editor-post-title__input, .editor-rich-text, .edit-post-visual-editor, .edit-post-visual-editor input[type=text].editor-default-block-appender__content, .edit-post-visual-editor p{
+    h2{
+      font-family:$fontMain;
+      color: $accentColor;
+      font-size: 14pt;
+      line-height: 33pt;
+      letter-spacing: 0pt;
+      font-weight:600;
+    }
+    h3{
+      font-family:$fontMain;
+      font-size: 40pt;
+      line-height: 45pt;
+      letter-spacing: 0;
+
+    }
+  }
+
+  table.fixed{
+    overflow:hidden;
+  }
+
+  color:$fontColor;
+  font-family:$fontMain;
+
+  h1,h2,h3,h4,h5,p{
+    color:$textGray;
+  }
+  a{
+    color:$accentColor;
+  }
+  a:hover{
+    color: darken($accentColor,20%);
+  }
+  .wp-menu-name{
+    color:$textGray;
+  }
+  div.wp-menu-image:before{
+    color:$fontColor !important;
+  }
+  .acf-switch.-on{
+    background:$accentColor;
+    border-color:darken($accentColor,20%);
+    .acf-switch-slider{
+      border-color:$accentColor;
+    }
+  }
+  /* Style custom post types in menu bar different */
+  li[id^='menu-posts-'] {
+    .wp-menu-name{
+      color:$accentColor;
+    }
+    div.wp-menu-image:before {
+        color:$accentColor !important;
+    }
+  }
+  .notice-success, div.updated{
+    border-left-color:$accentColor;
+  }
+  #wpwrap{
+    background: #f2f2f2;
+  }
+  #adminmenuback, #adminmenuwrap, #wpadminbar{
+    background-color:darken($lightGray,30%);
+  }
+  #adminmenu{
+    background: $white;
+    
+    &.wp-has-current-submenu{
+      background-color:darken($lightGray,10%);
+    }
+    li{
+      &.menu-top{
+        &:hover{
+          background: darken($lightGray,20%);
+        }
+      }
+      &.wp-has-current-submenu{
+        a {
+          &.current{
+            color:$lightGray;
+            background: darken($lightGray,20%);
+          }
+          background: darken($lightGray,10%);
+        }
+        ul.wp-submenu{
+          background: $white;
+          a{
+            color:$textGray;
+          }
+        }
+      }
+    }
+    a{
+      &:hover,&:active {
+        color:$accentColor;
+      }
+      //&.wp-has-current-submenu{
+      //  &:after{
+      //    border-right-color:$accentColor;
+      //  }
+      //}
+
+    }
+  }
+  #post-body {
+    .button-primary {
+      background: $accentColor !important;
+      border-color: $gray !important;
+      box-shadow:none;
+      color: #fff;
+      text-decoration: none;
+      text-shadow: none !important;
+    }
+  }
+
+  #wpbody{
+    .wrap{
+      margin:2px;
+      .page-title-action{
+        color:$accentColor;
+        &:hover{
+          color:$white;
+          background:$accentColor;
+          border:none;
+        }
+      }
+    }
+  }
+
+  #footer-thankyou{
+    display:none;
+  }
+  #footer-left{
+    &:after {
+      content: "Made with love by OGK";
+    }
+  }
+
+}

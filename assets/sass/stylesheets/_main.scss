@@ -1,0 +1,222 @@
+/* ====================================================================================================================================
+  BASE STYLES
+  Styles in here are foundations: Button styling, universal form styling, section sizes, colors, container sizes, etc.
+======================================================================================================================================= */
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  font-family: $fontMain;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: auto;
+  overscroll-behavior-y: none;
+
+  &.fixed {
+    overflow: hidden;
+  }
+
+  &.error404 {
+    height: 100%;
+  }
+
+  .site-content {
+    overflow: hidden;
+  }
+}
+
+*:focus {
+  outline: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: $fontColor;
+  @include hover-transition;
+}
+
+i {
+  font-style: italic;
+}
+
+strong {
+  font-weight: $bold;
+}
+
+.text-white {
+  color: $white;
+}
+
+.text-accent {
+  color: $accentColor;
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+.container {
+  max-width: $container;
+  padding: 100px 50px;
+  margin: 0 auto;
+  width: 100%;
+  overflow: hidden;
+}
+
+.container-large {
+  max-width: 100%;
+  padding: 0 50px;
+  margin: 0 auto;
+  width: 100%;
+  overflow: hidden;
+}
+
+.container-small {
+  @extend .container;
+  width: $container/2;
+  max-width: 100%;
+  padding: 50px;
+  margin: 0 auto;
+}
+
+.lazyload-wrap {
+  img {
+    opacity: 0;
+    @include hover-transition();
+
+    &.lazyloaded {
+      opacity: 1;
+    }
+  }
+}
+
+.fadeUp {
+  opacity: 0;
+  top: 50px;
+  position: relative;
+}
+
+.visible-mobile {
+  display: none;
+}
+
+// Gravity Form Mobile Styling
+.gform_button {
+  -webkit-appearance: none;
+  border-radius: 0 !important;
+}
+
+.gfield {
+  input, textarea {
+    outline: none;
+    border-radius: 0 !important;
+  }
+}
+
+// Sizes
+
+.twenty {
+  width: 20%;
+}
+
+.twenty-five {
+  width: 25%;
+}
+
+.thirty {
+  width: 30%;
+}
+
+.thirty-five {
+  width: 35%;
+}
+
+.forty {
+  width: 40%;
+}
+
+.forty-five {
+  width: 45%;
+}
+
+.fifty {
+  width: 50%;
+}
+
+.sixty {
+  width: 60%;
+}
+
+.seventy-five {
+  width: 75%;
+}
+
+.eighty {
+  width: 80%;
+}
+
+.full {
+  width: 100%;
+}
+
+// Flexbox Ready Classes
+
+.flex {
+  display: flex;
+}
+
+.flex-sb {
+  justify-content: space-between;
+}
+
+.flex-jc {
+  justify-content: center;
+}
+
+.flex-je {
+  justify-content: flex-end;
+}
+
+.flex-ac {
+  align-items: center;
+}
+
+.flex-as {
+  align-items: flex-start;
+}
+
+.flex-ae {
+  align-items: flex-end;
+}
+
+// Background Colors
+.bg-primary {
+  background: $primary;
+}
+
+.bg-accent {
+  background: $accent;
+}
+
+.bg-offWhite {
+  background: $offWhite;
+}
+
+.bg-white {
+  background: $white;
+}

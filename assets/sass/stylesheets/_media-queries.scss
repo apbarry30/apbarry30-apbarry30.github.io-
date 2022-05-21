@@ -1,0 +1,229 @@
+/* +++++++++++++++++   Media Queries  ++++++++++++++++++++++ */
+
+/* *********************************************************************** */
+/* *****************  BREAKPOINT: Desktop Large - 1920px ***************** */
+/* *********************************************************************** */
+
+@media only screen and (max-width:$breakpoint-desktop-large){
+
+
+}
+
+/* ********************************************************************* */
+/* *****************  BREAKPOINT: Desktop Med - 1440px ***************** */
+/* ********************************************************************* */
+
+@media only screen and (max-width:$breakpoint-desktop-med){
+
+  // Header
+  header {
+    .logo {
+      width: 166px;
+      height: 41px;
+      svg {
+        width: 166px;
+        height: 41px;
+      }
+    }
+    .menu-main-menu-container {
+      ul {
+        li {
+          padding: 38px 10px;
+        }
+      }
+    }
+  }
+
+}
+
+/* ********************************************************************* */
+/* *****************  BREAKPOINT: Desktop Med - 1280px ***************** */
+/* ********************************************************************* */
+
+@media only screen and (max-width: 1280px){
+
+  // Header
+  header {
+    &.container-large {
+      padding: 0 20px;
+    }
+    .header-right {
+      .header-phone {
+        a span {
+          display: none;
+        }
+      }
+    }
+    .menu-main-menu-container {
+      ul {
+        li {
+          a {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  // Footer
+  footer {
+    .footer-top {
+      flex-direction: column;
+      .logo {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+}
+
+/* *********************************************************************** */
+/* *****************  BREAKPOINT: Desktop Small - 1170px ***************** */
+/* *********************************************************************** */
+@media only screen and (max-width: 1170px){
+
+  // Typography
+  h1, .h1 {
+    font-size: 33px;
+    line-height: 39px;
+  }
+  h2, .h2 {
+    font-size: 33px;
+    line-height: 39px;
+  }
+  h3, .h3 {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  h4, .h4 {
+    font-size: 25px;
+    line-height: 29px;
+  }
+  h5, .h5 {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  // Footer
+  footer {
+    .container-large {
+      padding: 50px 20px;
+    }
+    .footer-top {
+      .footer-menu {
+        flex-direction: column;
+        .menu-footer-menu-container {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+
+}
+
+/* *********************************************************************** */
+/* *****************  BREAKPOINT: Desktop Small - 1060px ***************** */
+/* *********************************************************************** */
+
+@media only screen and (max-width:$breakpoint-desktop-small){
+
+
+}
+
+/* ********************************************************************** */
+/* *****************  BREAKPOINT: Tablet Large - 991px ****************** */
+/* ********************************************************************** */
+
+@media only screen and ( max-width:$breakpoint-tablet-large){
+
+  .container {
+    padding: 50px 20px;
+  }
+  .container-large {
+    padding: 50px 20px;
+  }
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: block !important;
+  }
+
+  // Header
+  header.container-large {
+    padding: 10px 20px;
+  }
+
+}
+
+/* **************************************************************** */
+/* *****************  BREAKPOINT: Tablet - 785px ****************** */
+/* **************************************************************** */
+
+@media only screen and ( max-width:$breakpoint-tablet){
+
+  .visible-tablet{
+    display:block !important;
+  }
+  .hidden-tablet{
+    display:none !important;
+  }
+
+  // Footer
+  footer {
+    .menu-footer-menu-container {
+      ul {
+        flex-wrap: wrap;
+        li {
+          width: 100%;
+          margin-bottom: 5px;
+          a {
+            text-align: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+    .footer-bottom {
+      flex-direction: column-reverse;
+      align-items: center;
+      .social {
+        margin-bottom: 20px;
+      }
+      .footer-copyright {
+        text-align: center;
+      }
+    }
+  }
+
+}
+
+/* *************************************************************** */
+/* *****************  BREAKPOINT: Phone - 600px ****************** */
+/* *************************************************************** */
+
+@media only screen and ( max-width: 600px ){
+
+
+
+}
+
+/* *************************************************************** */
+/* *****************  BREAKPOINT: Phone - 480px ****************** */
+/* *************************************************************** */
+
+@media only screen and ( max-width:$breakpoint-phone ){
+
+  .visible-mobile{
+    display:flex !important;
+  }
+  .hidden-mobile{
+    display:none !important;
+  }
+  footer{
+    .content{
+      @include flex-direction(column);
+    }
+  }
+
+}

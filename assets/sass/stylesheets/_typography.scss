@@ -1,0 +1,88 @@
+/* Set universal font sizes and styles here */
+
+h1, .h1 {
+  font-family: $fontHeader;
+  color: $textGray;
+  font-weight: $regular;
+  font-size: 64px;
+  line-height: 72px;
+  letter-spacing: -0.04em;
+}
+
+h2, .h2 {
+  font-family: $fontHeader;
+  color: $textGray;
+  font-weight: $regular;
+  font-size: 48px;
+  line-height: 60px;
+  letter-spacing: -0.03em;
+}
+
+h3, .h3 {
+  font-family: $fontHeader;
+  color: $textGray;
+  font-weight: $bold;
+  font-size: 36px;
+  line-height: 42px;
+  letter-spacing: -0.02em;
+}
+
+h4, .h4 {
+  font-family: $fontHeader;
+  color: $textGray;
+  font-weight: $bold;
+  font-size: 28px;
+  line-height: 33px;
+  letter-spacing: -0.003em;
+}
+
+h5, .h5 {
+  font-family: $fontHeader;
+  color: $textGray;
+  font-weight: $regular;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+}
+
+h6, .h6 {
+  font-family: $fontBody;
+  color: $accent;
+  font-weight: $medium;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: -0.02em;
+  &.uc {
+    text-transform: uppercase;
+    letter-spacing: 0.03px;
+  }
+}
+
+p {
+  font-family: $fontBody;
+  color: $textGray;
+  font-weight: $regular;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.003em;
+}
+
+
+// Colors
+.tc-wht {
+  color: $white;
+}
+.tc-acc {
+  color: $accent;
+}
+.tc-prim {
+  color: $primary;
+}
+
+// Text Alignment
+.ta-center {
+  text-align: center;
+}
+.ta-right {
+  text-align: right;
+}

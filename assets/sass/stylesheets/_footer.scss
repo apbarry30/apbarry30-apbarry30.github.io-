@@ -1,0 +1,98 @@
+// Footer Styles
+
+footer {
+  background-color: $offWhite;
+  overflow: hidden;
+  a {
+    text-transform: unset;
+  }
+  .footer-top {
+    padding: 65px 50px;
+    .logo {
+      width: 200px;
+    }
+    .footer-phone {
+      margin: 0 20px;
+      svg {
+        margin-right: 10px;
+        path {
+          fill: $accent;
+          @include hover-transition();
+        }
+      }
+      a {
+        font-family: $fontBody;
+        font-weight: $bold;
+        color: $accent;
+        font-size: 16px;
+        letter-spacing: 0.03px;
+        text-transform: uppercase;
+      }
+      &:hover {
+        a {
+          color: $primary;
+        }
+        svg {
+          path {
+            fill: $primary;
+          }
+        }
+      }
+    }
+  }
+  .footer-bottom {
+    border-top: solid #C3C9D1 2px;
+    padding: 35px 50px;
+    .footer-copyright {
+      a {
+        color: $textGray;
+        text-decoration: underline;
+        font-size: 14px;
+        &:hover {
+          color: $accent;
+        }
+      }
+    }
+    .social {
+      a {
+        margin-right: 20px;
+        &:last-of-type {
+          margin-right: 0;
+        }
+        &:hover {
+          svg path#Path, svg path#Shape {
+            fill: $accent;
+          }
+        }
+      }
+      svg path {
+        @include hover-transition();
+      }
+    }
+  }
+  .menu-footer-menu-container {
+    ul {
+      display: flex;
+      li {
+        list-style-type: none;
+        padding: 0 20px;
+
+        a {
+          text-decoration: none;
+          color: $textGray;
+          font-family: $fontBody;
+          font-weight: $regular;
+          font-size: 16px;
+          line-height: 24px;
+          position: relative;
+          display: flex;
+          align-items: center;
+
+          &:hover {
+            color: $accent;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+// Sass Settings,  Variables and Mixins
+@import
+"partials/mixins",
+"partials/variables",
+"partials/resets";
+
+
+/*********************
+STYLESHEETS
+*********************/
+
+
+
+// import all components
+@import
+"components/buttons";
+
+
+// import all stylesheets
+@import
+"stylesheets/typography",
+"stylesheets/main",
+"stylesheets/header",
+"stylesheets/footer";
+
+// import all templates
+@import "templates/template-home";
+
+// import all sections
+@import
+"sections/basic-hero";
+
+
+// Import Media Queries File LAST
+@import "stylesheets/media-queries";
