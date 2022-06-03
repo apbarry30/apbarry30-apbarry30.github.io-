@@ -25,6 +25,7 @@ header {
     ul {
       display: flex;
       li {
+        cursor: pointer;
         list-style-type: none;
         text-decoration: none;
         padding: 38px 20px;
@@ -154,7 +155,7 @@ header {
   width: 25px;
   height: 25px;
   position: absolute;
-  top: 33%;
+  top: 50px;
   right: 20px;
   transform: rotate(0deg);
   transition: .5s ease-in-out;

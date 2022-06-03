@@ -2,7 +2,9 @@
   BASE STYLES
   Styles in here are foundations: Button styling, universal form styling, section sizes, colors, container sizes, etc.
 ======================================================================================================================================= */
-
+html{
+  scroll-behavior: smooth;
+}
 *, *:before, *:after {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -19,6 +21,7 @@ body {
   min-height: 100vh;
   overflow: auto;
   overscroll-behavior-y: none;
+  background: #222;
 
   &.fixed {
     overflow: hidden;
@@ -179,6 +182,9 @@ strong {
 .flex {
   display: flex;
 }
+.flex-col{
+  flex-direction: column;
+}
 
 .flex-sb {
   justify-content: space-between;
@@ -219,4 +225,25 @@ strong {
 
 .bg-white {
   background: $white;
+}
+
+.sites{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+section.sites-section{
+  .image-hover{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    background: #222;
+    opacity: .23;
+    left: 0;
+    top: 0;
+    @include hover-transition();
+    &:hover{
+      opacity: 0;
+      @include hover-transition();
+    }
+  }
 }

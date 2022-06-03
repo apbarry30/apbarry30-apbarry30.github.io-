@@ -15,27 +15,14 @@
 
 @media only screen and (max-width:$breakpoint-desktop-med){
 
-  // Header
-  header {
-    .logo {
-      width: 166px;
-      height: 41px;
-      svg {
-        width: 166px;
-        height: 41px;
-      }
-    }
-    .menu-main-menu-container {
-      ul {
-        li {
-          padding: 38px 10px;
-        }
-      }
-    }
-  }
+
 
 }
-
+@media only screen and (max-width: $container){
+  .container{
+    padding:50px;
+  }
+}
 /* ********************************************************************* */
 /* *****************  BREAKPOINT: Desktop Med - 1280px ***************** */
 /* ********************************************************************* */
@@ -44,16 +31,7 @@
 
   // Header
   header {
-    &.container-large {
-      padding: 0 20px;
-    }
-    .header-right {
-      .header-phone {
-        a span {
-          display: none;
-        }
-      }
-    }
+
     .menu-main-menu-container {
       ul {
         li {
@@ -67,10 +45,13 @@
 
   // Footer
   footer {
-    .footer-top {
-      flex-direction: column;
-      .logo {
-        margin-bottom: 30px;
+    .menu-footer-menu-container{
+      ul {
+        li {
+          a {
+            font-size: 14px;
+          }
+        }
       }
     }
   }

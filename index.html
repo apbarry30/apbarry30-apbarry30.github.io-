@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/assets/sass/style.css">
+    <link rel="stylesheet" href="dist/assets/sass/style.css">
     <title>
       Amanda Barry's page
     </title>
@@ -11,28 +11,86 @@
   <body>
     <header>
       <div class="container">
-        <nav>
-          <li>
-            Portfolio
-          </li>
-          <li>About</li>
-          <li>Contact</li>
+        <nav class="menu-main-menu-container">
+          <ul class="flex flex-col">
+            <li>
+              <a href="portfolio.html">Portfolio</a>
+            </li>
+            <li>
+              <a href="aboutme.html">About</a>
+            </li>
+          </ul>
         </nav>
+        <div class="nav-menu mobile">
+          <div class="container">
+            <div class="menu-mobile-menu-container">
+              <ul>
+                <li>
+                  <a href="portfolio.html">Portfolio</a>
+                </li>
+                <li>
+                  <a href="aboutme.html">About</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
       </div>
     </header>
-    <main>
-      <div class="container">
+    <main class="site-content">
+      <section class="hero-section">
+        <div class="container">
 
-      </div>
+        </div>
+      </section>
+      <section class="skills">
+        <div class="container">
+
+        </div>
+      </section>
+      <section class="sites-section">
+        <div class="container">
+          <div class="sites">
+            <div class="portfolio-item">
+              <div class="image" style="position: relative">
+                <div class="image-hover">
+
+                </div>
+                <img src="images/hueit.png" alt="hue-it-website">
+                <a href="https://www.hueit.com/"></a>
+              </div>
+              <h3 class="portfolio-title"><a href="https://www.hueit.com/">Hue I.T. Website</a></h3>
+              <div class="portfolio-info">
+                <div class="portfolio-info portfolio-tag">HTML, CSS, JS</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <footer>
-      <div class="container">
+      <div class="menu-footer-menu-container container flex flex-sb">
         <ul>
           <li>
-
+            <a href="https://www.linkedin.com/in/amanda-barry22/">LinkedIn</a>
+          </li>
+          <li>
+            <a href=https://github.com/apbarry30">Github</a>
+          </li>
+          <li>
+            <a href="mailto:abarryx30@gmail.com">Email</a>
           </li>
         </ul>
+        <div class="copyright">
+          <p>Copyright © 2022 <a href="https://github.com/apbarry30">Amanda Barry</a>. All Rights Reserved</p>
+        </div>
       </div>
+      <script type="text/javascript" src="dist/assets/js/scripts-min.js"></script>
     </footer>
   </body>
 </html>
