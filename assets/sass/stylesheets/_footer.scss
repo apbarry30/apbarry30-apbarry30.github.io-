@@ -1,10 +1,14 @@
 // Footer Styles
 
 footer {
-  background-color: $offWhite;
+  background-color: $primary;
   overflow: hidden;
+  border-top: 10px solid $accent;
   a {
     text-transform: unset;
+  }
+  .copyright p{
+    font-size: 14px;
   }
   .footer-top {
     padding: 65px 50px;
@@ -73,11 +77,17 @@ footer {
   .menu-footer-menu-container {
     ul {
       display: flex;
+      justify-content: space-between;
+      width: 30%;
       li {
+        border:2px solid transparent;
         list-style-type: none;
-        padding: 0 20px;
-
+        border-radius: 20px;
+        background: $accent;
+        @include hover-transition();
+        cursor: pointer;
         a {
+          padding: 0 20px;
           text-decoration: none;
           color: $textGray;
           font-family: $fontBody;
@@ -87,8 +97,12 @@ footer {
           position: relative;
           display: flex;
           align-items: center;
-
-          &:hover {
+        }
+        &:hover{
+          border: 2px solid $accent;
+          background: $primary;
+          @include hover-transition();
+          a{
             color: $accent;
           }
         }

@@ -151,4 +151,26 @@ section.hero {
   }
 }
 
+section.hero-section{
+  border-bottom: 4px solid $accent;
+  .fill-text{
 
+      --fill-color:#A8A6D3;
+      position: relative;
+      display: block;
+      padding: 4px 0;
+      font: 700 3rem Raleway, sans-serif;
+      text-decoration: none;
+      text-transform: uppercase;
+      -webkit-text-stroke: 2px var(--fill-color);
+      background: linear-gradient(var(--fill-color) 0 100%) left / 0 no-repeat;
+      color: transparent;
+      background-clip: text;
+      transition: 0.5s linear;
+      text-align: center;
+      &:hover {
+        background-size: 100%;
+      }
+
+  }
+}
