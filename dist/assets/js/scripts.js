@@ -3684,6 +3684,171 @@
     return a.$ === r && (a.$ = Ub), b && a.jQuery === r && (a.jQuery = Tb), r;
   }, b || (a.jQuery = a.$ = r), r;
 });
+(function ($) {
+  return $.fn.typeText = function () {
+    var addString, defaultOptions, options;
+
+    if (arguments.length === 1) {
+      if (typeof arguments[0] === "string") {
+        addString = arguments[0];
+        options = {};
+      } else {
+        options = arguments[0];
+      }
+    } else if (arguments.length === 2) {
+      addString = arguments[0];
+      options = arguments[1];
+    } else {
+      throw "improper number of args";
+    }
+
+    defaultOptions = {
+      typeSpeed: 50,
+      lineWait: 1000,
+      then: function () {}
+    };
+    options = $.extend(defaultOptions, options);
+    return this.each(function () {
+      var _el, addToFinishedQueue, afterHandlers, currentEl, index, init, lineIndex, onTick, printLine, printedString, setString, stringArray, triggerFinished, typeInterval, wholeString;
+
+      _el = $(this);
+      stringArray = [];
+      wholeString = printedString = "";
+      index = lineIndex = 0;
+      typeInterval = currentEl = null;
+      afterHandlers = [];
+
+      setString = function (_this) {
+        return function (newString) {
+          if (newString == null) {
+            newString = null;
+          }
+
+          if (!newString) {
+            newString = printedString;
+          }
+
+          return currentEl.text(newString);
+        };
+      }(this);
+
+      onTick = function (_this) {
+        return function () {
+          if (index < wholeString.length) {
+            printedString += wholeString[index++];
+            return setString();
+          } else {
+            setString(wholeString);
+            clearInterval(typeInterval);
+
+            if (lineIndex < stringArray.length) {
+              return setTimeout(function () {
+                currentEl.removeClass("printing");
+                currentEl = $(_this).children().eq(lineIndex);
+                return printLine(stringArray[lineIndex++]);
+              }, options.lineWait);
+            } else {
+              return triggerFinished();
+            }
+          }
+        };
+      }(this);
+
+      printLine = function (printString) {
+        wholeString = printString;
+        printedString = "";
+        index = 0;
+        currentEl.addClass("printing");
+        return typeInterval = setInterval(onTick, options.typeSpeed);
+      };
+
+      addToFinishedQueue = function (cb) {
+        return afterHandlers.push(cb);
+      };
+
+      triggerFinished = function () {
+        var handler, i, len, results;
+        currentEl.removeClass("printing");
+        results = [];
+
+        for (i = 0, len = afterHandlers.length; i < len; i++) {
+          handler = afterHandlers[i];
+          results.push(handler.apply(_el));
+        }
+
+        return results;
+      };
+
+      init = function () {
+        var newParagraph;
+        addToFinishedQueue(options.then);
+
+        if (addString) {
+          newParagraph = $("<p></p>");
+          stringArray.push(addString);
+
+          _el.append(newParagraph);
+
+          currentEl = newParagraph;
+        } else {
+          _el.children().each(function () {
+            stringArray.push($(this).text());
+            return $(this).text("");
+          });
+
+          currentEl = _el.children().eq(lineIndex);
+        }
+
+        return printLine(stringArray[lineIndex++]);
+      };
+
+      init();
+      return this;
+    });
+  };
+})(jQuery);
+!function (n) {
+  return n.fn.typeText = function () {
+    var t, e, r;
+    if (1 === arguments.length) "string" == typeof arguments[0] ? (t = arguments[0], r = {}) : r = arguments[0];else {
+      if (2 !== arguments.length) throw "improper number of args";
+      t = arguments[0], r = arguments[1];
+    }
+    return e = {
+      typeSpeed: 50,
+      lineWait: 1e3,
+      then: function () {}
+    }, r = n.extend(e, r), this.each(function () {
+      var e, u, i, s, a, h, l, o, p, c, f, g, m, d, v;
+      return e = n(this), g = [], v = c = "", a = l = 0, d = s = null, i = [], f = function (n) {
+        return function (n) {
+          return null == n && (n = null), n || (n = c), s.text(n);
+        };
+      }(this), o = function (t) {
+        return function () {
+          return a < v.length ? (c += v[a++], f()) : (f(v), clearInterval(d), l < g.length ? setTimeout(function () {
+            return s.removeClass("printing"), s = n(t).children().eq(l), p(g[l++]);
+          }, r.lineWait) : m());
+        };
+      }(this), p = function (n) {
+        return v = n, c = "", a = 0, s.addClass("printing"), d = setInterval(o, r.typeSpeed);
+      }, u = function (n) {
+        return i.push(n);
+      }, m = function () {
+        var n, t, r, u;
+
+        for (s.removeClass("printing"), u = [], t = 0, r = i.length; r > t; t++) n = i[t], u.push(n.apply(e));
+
+        return u;
+      }, h = function () {
+        var i;
+        return u(r.then), t ? (i = n("<p></p>"), g.push(t), e.append(i), s = i) : (e.children().each(function () {
+          return g.push(n(this).text()), n(this).text("");
+        }), s = e.children().eq(l)), p(g[l++]);
+      }, h(), this;
+    });
+  };
+}(jQuery);
 jQuery(document).ready(function ($) {
   $(".hamburger").on("click", function () {
     $(this).toggleClass("open");
@@ -3715,6 +3880,18 @@ jQuery(document).ready(function ($) {
   $('body.fixed').on('click', function () {
     $('body').removeClass('fixed');
     $('.port-popup').removeClass('open');
+  });
+  return $(".print").typeText({
+    then: function () {
+      return this.typeText(".......................", {
+        typeSpeed: 250,
+        then: function () {
+          return this.typeText(".......................", {
+            typeSpeed: 500
+          });
+        }
+      });
+    }
   });
 });
 !function (e) {

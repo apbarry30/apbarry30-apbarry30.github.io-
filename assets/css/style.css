@@ -164,10 +164,35 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
+body:before {
+  content: "";
+  height: 0;
+  opacity: 0;
+  width: 0;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
 body.fixed {
   -ms-scroll-chaining: none;
       overscroll-behavior: none;
   overflow: hidden;
+  position: relative;
+}
+body.fixed:before {
+  z-index: 2;
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-backdrop-filter: blur(32px);
+          backdrop-filter: blur(32px);
+  opacity: 100%;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
 body.error404 {
   height: 100%;
@@ -246,10 +271,17 @@ strong {
   opacity: 1;
 }
 
-.fadeUp {
+.inview-fadeUp {
   opacity: 0;
   top: 50px;
   position: relative;
+  -webkit-transition: all 0.8s ease-in-out;
+  transition: all 0.8s ease-in-out;
+}
+
+.fadeUp {
+  opacity: 1;
+  top: 0;
 }
 
 .visible-mobile {
@@ -381,44 +413,22 @@ strong {
   -ms-grid-columns: 1fr 20px 1fr;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 20px;
-  grid-row-gap: 20px;
-  -ms-grid-rows: 1fr 20px 1fr;
-  grid-template-rows: 1fr 1fr;
-}
-
-.sites > *:nth-child(1) {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-}
-
-.sites > *:nth-child(2) {
-  -ms-grid-row: 1;
-  -ms-grid-column: 3;
-}
-
-.sites > *:nth-child(3) {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-}
-
-.sites > *:nth-child(4) {
-  -ms-grid-row: 3;
-  -ms-grid-column: 3;
+  grid-row-gap: 30px;
 }
 
 section.sites-section .image-hover {
+  opacity: 0;
   position: absolute;
   width: 100%;
   height: 100%;
   background: #222;
-  opacity: 0.23;
   left: 0;
   top: 0;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 section.sites-section .image-hover:hover {
-  opacity: 0;
+  opacity: 0.23;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
@@ -464,8 +474,8 @@ section.sites-section .image-hover:hover {
 }
 
 .all:hover {
-  -webkit-perspective: 1000px;
-          perspective: 1000px;
+  -webkit-perspective: 1300px;
+          perspective: 1300px;
   -webkit-transition: all 1.3s ease-in;
   transition: all 1.3s ease-in;
   -webkit-transform: perspective(10000px) rotateX(0deg);
@@ -485,13 +495,14 @@ section.sites-section .image-hover:hover {
 
 .left, .center, .right, .lefter, .righter {
   width: 20%;
+  max-width: 20%;
   height: 150px;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
   border-radius: 10px;
   border: 1px solid #fff;
-  -webkit-box-shadow: 0 0 20px 5px rgba(100, 100, 255, 0.4);
-          box-shadow: 0 0 20px 5px rgba(100, 100, 255, 0.4);
+  -webkit-box-shadow: 0 0 20px 5px rgba(168, 166, 211, 0.4);
+          box-shadow: 0 0 20px 5px rgba(168, 166, 211, 0.4);
   opacity: 0;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -505,37 +516,35 @@ section.sites-section .image-hover:hover {
   background-blend-mode: color-burn;
 }
 .left:hover, .center:hover, .right:hover, .lefter:hover, .righter:hover {
-  -webkit-box-shadow: 0 0 30px 10px rgba(100, 100, 255, 0.6);
-          box-shadow: 0 0 30px 10px rgba(100, 100, 255, 0.6);
+  -webkit-box-shadow: 0 0 30px 10px rgba(168, 166, 211, 0.6);
+          box-shadow: 0 0 30px 10px rgba(168, 166, 211, 0.6);
   background-color: #ccf;
 }
 
 .text {
-  -webkit-transform: translateY(30px);
-          transform: translateY(30px);
   opacity: 0;
   text-align: center;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   bottom: -40px;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  -webkit-transform: translate(-50%, 20px);
+          transform: translate(-50%, 20px);
   position: absolute;
   will-change: transform;
   color: #fff;
-  text-shadow: 0 0 5px rgba(100, 100, 255, 0.6);
+  text-shadow: 0 0 5px rgba(168, 166, 211, 0.6);
 }
 
 .lefter {
-  -webkit-transform: translateX(-60px) translateZ(-50px) rotateY(-10deg);
-          transform: translateX(-60px) translateZ(-50px) rotateY(-10deg);
+  -webkit-transform: translateX(-60px) translateZ(-50px) rotateY(0deg);
+          transform: translateX(-60px) translateZ(-50px) rotateY(0deg);
   background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/organization-512.png);
 }
 
 .left {
-  -webkit-transform: translateX(-30px) translateZ(-25px) rotateY(-5deg);
-          transform: translateX(-30px) translateZ(-25px) rotateY(-5deg);
+  -webkit-transform: translateX(-30px) translateZ(-25px) rotateY(0deg);
+          transform: translateX(-30px) translateZ(-25px) rotateY(0deg);
   background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/creative_draw-512.png);
 }
 
@@ -545,14 +554,14 @@ section.sites-section .image-hover:hover {
 }
 
 .right {
-  -webkit-transform: translateX(30px) translateZ(-25px) rotateY(5deg);
-          transform: translateX(30px) translateZ(-25px) rotateY(5deg);
+  -webkit-transform: translateX(30px) translateZ(-25px) rotateY(0deg);
+          transform: translateX(30px) translateZ(-25px) rotateY(0deg);
   background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/cloud_weather-512.png);
 }
 
 .righter {
-  -webkit-transform: translateX(60px) translateZ(-50px) rotateY(10deg);
-          transform: translateX(60px) translateZ(-50px) rotateY(10deg);
+  -webkit-transform: translateX(60px) translateZ(-50px) rotateY(0deg);
+          transform: translateX(60px) translateZ(-50px) rotateY(0deg);
   background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/search-512.png);
 }
 
@@ -564,8 +573,7 @@ section.sites-section .image-hover:hover {
   transition: all 0.6s ease;
   width: 100%;
   height: 100%;
-  background-color: #303050;
-  background-image: radial-gradient(circle at center top, #cce, #33a);
+  background-color: #090a0f;
   border-radius: 10px;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
   display: -webkit-box;
@@ -622,6 +630,78 @@ section.sites-section .image-hover:hover {
   color: #222;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
+}
+
+.port-popup {
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+  height: 0;
+  width: 0;
+}
+.port-popup .popup-inner {
+  opacity: 0;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+}
+.port-popup.open {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: fixed;
+  top: 50%;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  left: 50%;
+  z-index: 10;
+  padding: 20px;
+  background: white;
+  width: 60%;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+}
+.port-popup.open .popup-inner {
+  opacity: 100%;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+}
+
+.portfolio-item {
+  position: relative;
+}
+.portfolio-item:nth-of-type(even) {
+  -webkit-transition-delay: 0.5s;
+          transition-delay: 0.5s;
+}
+.portfolio-item .info-wrap {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: transparent;
+  opacity: 0;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+  height: 0;
+}
+.portfolio-item:hover .info-wrap {
+  height: 100%;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+  background: #7e84f9;
+  opacity: 0.5;
 }
 
 header {
@@ -780,8 +860,6 @@ header .header-right .header-phone:hover svg path {
   overflow: hidden;
   -webkit-transition: 0.6s all ease-in-out;
   transition: 0.6s all ease-in-out;
-  -webkit-transition-delay: 0.5s;
-          transition-delay: 0.5s;
 }
 .nav-menu .container, .nav-menu .container-small {
   display: -webkit-box;
@@ -1368,6 +1446,7 @@ section.hero-section {
   border-bottom: 4px solid #A8A6D3;
 }
 section.hero-section .fill-text {
+  z-index: 4;
   --fill-color:#A8A6D3;
   position: relative;
   display: block;
@@ -1388,6 +1467,36 @@ section.hero-section .fill-text {
 section.hero-section .fill-text:hover {
   background-size: 100%;
 }
+section.hero-section .print {
+  font-family: "Orbitron", monospace;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+section.hero-section .print p {
+  font-family: "Orbitron", monospace;
+}
+section.hero-section .print-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 
 /**  Home page template SCSS file - Create a new template file for each page template  **/
 section.basic-hero-section {
@@ -1402,6 +1511,10 @@ section.basic-hero-section h1 {
   letter-spacing: 4.39px;
   font-weight: 500;
   text-transform: uppercase;
+}
+
+section.hero-section {
+  min-height: 100vh;
 }
 
 /* +++++++++++++++++   Media Queries  ++++++++++++++++++++++ */

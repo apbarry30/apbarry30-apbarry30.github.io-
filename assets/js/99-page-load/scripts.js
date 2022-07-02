@@ -39,11 +39,25 @@ jQuery(document).ready(function($) {
        memberPopup = $('.port-popup');
        $(openPop).addClass('open');
        $('body').addClass("fixed");
-    })
+    });
     $('body.fixed').on('click', function(){
         $('body').removeClass('fixed');
         $('.port-popup').removeClass('open');
-    })
+    });
+
+
+        return $(".print").typeText({
+            then: function() {
+                return this.typeText(".......................", {
+                    typeSpeed: 250,
+                    then: function() {
+                        return this.typeText(".......................", {
+                            typeSpeed: 500
+                        });
+                    }
+                });
+            }
+        });
 
 
 });

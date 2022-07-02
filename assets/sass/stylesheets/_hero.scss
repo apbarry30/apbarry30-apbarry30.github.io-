@@ -154,7 +154,7 @@ section.hero {
 section.hero-section{
   border-bottom: 4px solid $accent;
   .fill-text{
-
+      z-index: 4;
       --fill-color:#A8A6D3;
       position: relative;
       display: block;
@@ -172,5 +172,22 @@ section.hero-section{
         background-size: 100%;
       }
 
+  }
+  .print{
+    font-family: "Orbitron", monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    p{
+      font-family: "Orbitron", monospace;
+    }
+  }
+  .print-wrapper{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;align-items: center;
   }
 }
