@@ -428,7 +428,6 @@ section.sites-section .image-hover:hover {
   background-image: radial-gradient(circle at center, #899Dc4, #495D84);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
   overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -502,7 +501,7 @@ section.sites-section .image-hover:hover {
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
-  background-color: #A8A6D3;
+  background-color: transparent;
   background-blend-mode: color-burn;
 }
 .left:hover, .center:hover, .right:hover, .lefter:hover, .righter:hover {

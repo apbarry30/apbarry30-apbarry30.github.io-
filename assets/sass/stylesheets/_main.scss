@@ -263,7 +263,7 @@ section.sites-section{
   background-image: radial-gradient(circle at center, #899Dc4, #495D84);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  //height: 100vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -312,7 +312,7 @@ section.sites-section{
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
-  background-color: $accent;
+  background-color: transparent;
   //cursor: pointer;
   background-blend-mode: color-burn;
 
