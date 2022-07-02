@@ -28,10 +28,30 @@ body {
   &::-webkit-scrollbar{
     display: none;
   }
-
+  &:before{
+    content: "";
+    height: 0;
+    opacity: 0;
+    width: 0;
+    transition: 0.4s ease-in-out;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   &.fixed {
     overscroll-behavior: none;
     overflow: hidden;
+    position: relative;
+    &:before{
+      z-index: 2;
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      backdrop-filter: blur(32px);
+      opacity: 100%;
+      transition: 0.4s ease-in-out;
+    }
   }
 
   &.error404 {
@@ -116,12 +136,17 @@ strong {
   }
 }
 
-.fadeUp {
+.inview-fadeUp {
   opacity: 0;
   top: 50px;
   position: relative;
+  transition: all 0.8s ease-in-out;
 }
 
+.fadeUp {
+  opacity: 1;
+  top: 0;
+}
 .visible-mobile {
   display: none;
 }
@@ -239,21 +264,20 @@ strong {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 20px;
-  grid-row-gap: 20px;
-  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 30px;
 }
 section.sites-section{
   .image-hover{
+    opacity: 0;
     position:absolute;
     width: 100%;
     height: 100%;
     background: #222;
-    opacity: .23;
     left: 0;
     top: 0;
     @include hover-transition();
     &:hover{
-      opacity: 0;
+      opacity: 0.23;
       @include hover-transition();
     }
   }
@@ -283,7 +307,7 @@ section.sites-section{
   width: 100%;
 }
 .all:hover {
-  perspective: 1000px;
+  perspective: 1300px;
   transition: all 1.3s ease-in;
   transform: perspective(10000px) rotateX(0deg);
   .text {
@@ -300,11 +324,12 @@ section.sites-section{
 
 .left, .center, .right, .lefter, .righter {
   width: 20%;
+  max-width: 20%;
   height: 150px;
   transform-style: preserve-3d;
   border-radius: 10px;
   border: 1px solid #fff;
-  box-shadow: 0 0 20px 5px rgba(100, 100, 255, .4);
+  box-shadow: 0 0 20px 5px rgba(168, 166, 211, .4);
   opacity: 0;
   transition: all .3s ease;
   transition-delay: 1s;
@@ -317,29 +342,28 @@ section.sites-section{
   background-blend-mode: color-burn;
 
   &:hover {
-    box-shadow: 0 0 30px 10px rgba(100, 100, 255, .6);
+    box-shadow: 0 0 30px 10px rgba(168, 166, 211, .6);
     background-color: #ccf;
   }
 }
 .text {
-  transform: translateY(30px);
   opacity: 0;
   text-align: center;
   transition: all .3s ease;
   bottom: -40px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, 20px);
   position: absolute;
   will-change: transform;
   color: #fff;
-  text-shadow: 0 0 5px rgba(100, 100, 255, .6)
+  text-shadow: 0 0 5px rgba(168, 166, 211, .6)
 }
 .lefter {
-  transform: translateX(-60px) translateZ(-50px) rotateY(-10deg);
+  transform: translateX(-60px) translateZ(-50px) rotateY(0deg);
   background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/organization-512.png);
 }
 .left {
-  transform: translateX(-30px) translateZ(-25px) rotateY(-5deg);
+  transform: translateX(-30px) translateZ(-25px) rotateY(0deg);
   background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/creative_draw-512.png);
 }
 .center {
@@ -347,11 +371,11 @@ section.sites-section{
   background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/app_window-512.png);
 }
 .right {
-  transform: translateX(30px) translateZ(-25px) rotateY(5deg);
+  transform: translateX(30px) translateZ(-25px) rotateY(0deg);
   background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/cloud_weather-512.png);
 }
 .righter {
-  transform: translateX(60px) translateZ(-50px) rotateY(10deg);
+  transform: translateX(60px) translateZ(-50px) rotateY(0deg);
   background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/search-512.png);
 }
 .explainer {
@@ -361,11 +385,10 @@ section.sites-section{
   transition: all .6s ease;
   width: 100%;
   height: 100%;
-  background-color: #303050;
-  background-image: radial-gradient(circle at center top, #cce, #33a);
+  background-color:#090a0f;
+  //background-image: radial-gradient(circle at center top, #cce, #33a);
   border-radius: 10px;
   text-shadow: 0 0 10px rgba(255, 255, 255, .8);
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -404,6 +427,60 @@ section.sites-section{
     background: $accent;
     color: $primary;
     @include hover-transition();
-
+  }
+}
+.port-popup{
+  //display: none;
+  transition: 0.4s ease-in-out;
+  height: 0;
+  width: 0;
+  .popup-inner{
+    opacity: 0;
+    transition: 0.4s ease-in-out;
+  }
+  &.open{
+    height: fit-content;
+    position: fixed;
+    top: 50%;
+    bottom: 0;
+    display: flex;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    z-index: 10;
+    padding: 20px;
+    background: white;
+    width: 60%;
+    transition: 0.4s ease-in-out;
+    .popup-inner{
+      opacity: 100%;
+      transition: 0.4s ease-in-out;
+    }
+  }
+}
+.portfolio-item{
+  position: relative;
+  &:nth-of-type(even){
+    transition-delay: 0.5s;
+  }
+  .info-wrap{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    background: transparent;
+    opacity: 0;
+    transition: 0.4s ease-in-out;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 0;
+  }
+  &:hover{
+    .info-wrap{
+      height: 100%;
+      transition: 0.4s ease-in-out;
+      background: #7e84f9;
+      opacity: 0.5;
+    }
   }
 }
