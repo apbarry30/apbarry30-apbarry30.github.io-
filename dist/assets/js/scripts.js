@@ -3684,6 +3684,51 @@
     return a.$ === r && (a.$ = Ub), b && a.jQuery === r && (a.jQuery = Tb), r;
   }, b || (a.jQuery = a.$ = r), r;
 });
+jQuery(document).ready(function ($) {
+  $(".hamburger").on("click", function () {
+    $(this).toggleClass("open");
+    $(".site-content").toggleClass("open");
+    $(".nav-menu").toggleClass("open");
+    $('body').toggleClass('fixed');
+  }); 
+
+  let fadeInSpeed = 700;
+  $('.inview-fadeUp').on('inview', function (event, isInView) {
+    if (isInView) {
+      $(this).addClass("fadeUp");
+    } else {
+    }
+  });
+  $('.inview-fadeIn').on('inview', function (event, isInView) {
+    if (isInView) {
+      $(this).addClass("fadeIn");
+    } else {
+    }
+  });
+  $('.portfolio-item').on('click', function () {
+    target = $(this).data('name');
+    openPop = "." + target;
+    memberPopup = $('.port-popup');
+    $(openPop).addClass('open');
+    $('body').addClass("fixed");
+  });
+  $('body.fixed').on('click', function () {
+    $('body').removeClass('fixed');
+    $('.port-popup').removeClass('open');
+  });
+  return $(".print").typeText({
+    then: function () {
+      return this.typeText(".......................", {
+        typeSpeed: 250,
+        then: function () {
+          return this.typeText(".......................", {
+            typeSpeed: 1000
+          });
+        }
+      });
+    }
+  });
+});
 (function ($) {
   return $.fn.typeText = function () {
     var addString, defaultOptions, options;
@@ -3849,51 +3894,6 @@
     });
   };
 }(jQuery);
-jQuery(document).ready(function ($) {
-  $(".hamburger").on("click", function () {
-    $(this).toggleClass("open");
-    $(".site-content").toggleClass("open");
-    $(".nav-menu").toggleClass("open");
-    $('body').toggleClass('fixed');
-  }); 
-
-  let fadeInSpeed = 700;
-  $('.inview-fadeUp').on('inview', function (event, isInView) {
-    if (isInView) {
-      $(this).addClass("fadeUp");
-    } else {
-    }
-  });
-  $('.inview-fadeIn').on('inview', function (event, isInView) {
-    if (isInView) {
-      $(this).addClass("fadeIn");
-    } else {
-    }
-  });
-  $('.portfolio-item').on('click', function () {
-    target = $(this).data('name');
-    openPop = "." + target;
-    memberPopup = $('.port-popup');
-    $(openPop).addClass('open');
-    $('body').addClass("fixed");
-  });
-  $('body.fixed').on('click', function () {
-    $('body').removeClass('fixed');
-    $('.port-popup').removeClass('open');
-  });
-  return $(".print").typeText({
-    then: function () {
-      return this.typeText(".......................", {
-        typeSpeed: 250,
-        then: function () {
-          return this.typeText(".......................", {
-            typeSpeed: 500
-          });
-        }
-      });
-    }
-  });
-});
 !function (e) {
   "function" == typeof define && define.amd ? define(["jquery"], e) : "object" == typeof exports ? module.exports = e(require("jquery")) : e(jQuery);
 }(function ($) {

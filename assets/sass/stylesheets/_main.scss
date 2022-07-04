@@ -37,13 +37,14 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 6;
   }
   &.fixed {
     overscroll-behavior: none;
     overflow: hidden;
     position: relative;
     &:before{
-      z-index: 2;
+      z-index: 5;
       content: "";
       width: 100%;
       height: 100%;
@@ -305,6 +306,7 @@ section.sites-section{
   justify-content: center;
   transform-style: preserve-3d;
   width: 100%;
+  margin-bottom: 50px;
 }
 .all:hover {
   perspective: 1300px;
@@ -328,7 +330,7 @@ section.sites-section{
   height: 150px;
   transform-style: preserve-3d;
   border-radius: 10px;
-  border: 1px solid #fff;
+  //border: 1px solid #fff;
   box-shadow: 0 0 20px 5px rgba(168, 166, 211, .4);
   opacity: 0;
   transition: all .3s ease;
@@ -381,14 +383,14 @@ section.sites-section{
 .explainer {
   font-weight: 300;
   font-size: 2rem;
-  color: #fff;
+  color: white;
   transition: all .6s ease;
   width: 100%;
   height: 100%;
-  background-color:#090a0f;
+  background-color:#1b2735;
   //background-image: radial-gradient(circle at center top, #cce, #33a);
   border-radius: 10px;
-  text-shadow: 0 0 10px rgba(255, 255, 255, .8);
+  //text-shadow: 0 0 10px rgba(255, 255, 255, .8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -397,7 +399,6 @@ section.sites-section{
 
 .ref {
   background-color: #000;
-  background-image: linear-gradient(to bottom, #d80, #c00);
   border-radius: 3px;
   padding: 7px 10px;
   position: absolute;

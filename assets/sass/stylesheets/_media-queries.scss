@@ -65,25 +65,18 @@
 
   // Typography
   h1, .h1 {
-    font-size: 33px;
-    line-height: 39px;
+    font-size: 65px;
+
   }
   h2, .h2 {
     font-size: 33px;
-    line-height: 39px;
+
   }
   h3, .h3 {
     font-size: 20px;
-    line-height: 26px;
+
   }
-  h4, .h4 {
-    font-size: 25px;
-    line-height: 29px;
-  }
-  h5, .h5 {
-    font-size: 20px;
-    line-height: 26px;
-  }
+
 
   // Footer
   footer {
@@ -185,7 +178,9 @@
 
 @media only screen and ( max-width: 600px ){
 
-
+    .sites{
+      grid-template-columns: 1fr;
+    }
 
 }
 

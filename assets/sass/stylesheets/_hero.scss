@@ -152,14 +152,20 @@ section.hero {
 }
 
 section.hero-section{
+  overflow:hidden;
   border-bottom: 4px solid $accent;
+  .container{
+    min-height: 100vh;
+    height: 100%;
+  }
   .fill-text{
       z-index: 4;
       --fill-color:#A8A6D3;
       position: relative;
       display: block;
       padding: 4px 0;
-      font: 700 3rem Raleway, sans-serif;
+      font-family: Raleway, sans-serif;
+      font-weight: bold;
       text-decoration: none;
       text-transform: uppercase;
       -webkit-text-stroke: 2px var(--fill-color);
@@ -169,6 +175,7 @@ section.hero-section{
       transition: 0.5s linear;
       text-align: center;
       &:hover {
+        letter-spacing: 0;
         background-size: 100%;
       }
 
@@ -177,9 +184,11 @@ section.hero-section{
     font-family: "Orbitron", monospace;
     display: flex;
     justify-content: center;
-    align-items: center;
+    height: 100vh;
     width: 100%;
+    align-items: flex-start;
     p{
+      opacity: 0.3;
       font-family: "Orbitron", monospace;
     }
   }
@@ -188,6 +197,14 @@ section.hero-section{
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 0;
+  }
+  .btn-wrap{
+    z-index: 2;
+  }
+  .bg-accent{
+    margin: 25px 0;
   }
 }

@@ -225,13 +225,15 @@ header {
 
 .nav-menu {
   position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
+  top: -300px;
+  left: -300px;
+  //height: 100%;
   width: 0;
-  max-width:30vw;
+  //width:600px;
+  height: 600px;
   background: $primary;
   z-index: 98;
+  border-radius: 50%;
   overflow: hidden;
   transition: 0.6s all ease-in-out;
   .container {
@@ -281,9 +283,23 @@ header {
     }
   }
   &.open {
-    width: 100%;
+    //width: 100%;
     overflow: visible;
     transition-delay: 0s;
+    width: 600px;
+    ul.menu{
+      display: flex;
+      position: absolute;
+      right: 20px;
+      bottom: 140px;
+      transform: rotate(-50deg);
+      li{
+        list-style-type: none;
+        a{
+          color: white;
+        }
+      }
+    }
     .container {
       .menu-mobile-menu-container {
         ul {
@@ -343,9 +359,9 @@ header {
   box-shadow: 0 0 4px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   height: 400px;
-  left: -200px;
+  left: 100px;
   position: absolute;
-  top: -200px;
+  top: 100px;
   width: 400px;
   transform: translateX(-200px) translateY(-200px);
   transition: transform 300ms;
@@ -374,15 +390,15 @@ header {
   border-radius: 50%;
 }
 .pie-color1 {
-  background: linear-gradient(135deg, #f12711, #f5af19);
+  background: linear-gradient(135deg, #6965b3, #4f4c9a);
   clip-path: polygon(200px 200px, 344px 450px, 0 450px);
 }
 .pie-color2 {
-  background: linear-gradient(135deg, #444, #7e84f9);
+  background: linear-gradient(135deg, #acaad5, #8a88c4);
   clip-path: polygon(200px 200px, 344px 450px, 450px 344px);
 }
 .pie-color3 {
-  background: linear-gradient(135deg, #444, #b7e13f);
+  background: linear-gradient(135deg, #cdcce6, #acaad5);
   clip-path: polygon(200px 200px, 450px 0, 450px 344px);
 }
 .card {
