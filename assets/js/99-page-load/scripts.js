@@ -52,7 +52,7 @@ jQuery(document).ready(function($) {
                     typeSpeed: 250,
                     then: function() {
                         return this.typeText(".......................", {
-                            typeSpeed: 1000
+                            typeSpeed: 250
                         });
                     }
                 });

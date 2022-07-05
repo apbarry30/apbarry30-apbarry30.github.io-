@@ -1520,6 +1520,8 @@ section.hero-section .print-wrapper {
       -ms-flex-align: start;
           align-items: flex-start;
   z-index: 0;
+  left: 0;
+  top: 0;
 }
 section.hero-section .btn-wrap {
   z-index: 2;
