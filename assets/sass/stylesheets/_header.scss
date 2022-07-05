@@ -290,13 +290,20 @@ header {
     ul.menu{
       display: flex;
       position: absolute;
-      right: 20px;
-      bottom: 140px;
-      transform: rotate(-50deg);
+      right: 87px;
+      bottom: 120px;
+      transform: rotate(-45deg);
       li{
         list-style-type: none;
-        a{
-          color: white;
+        font-size: 25px;
+        font-weight: bold;
+        color: white;
+
+      }
+      .animate{
+        display: none;
+        &.active{
+          display: flex;
         }
       }
     }
@@ -365,129 +372,163 @@ header {
   width: 400px;
   transform: translateX(-200px) translateY(-200px);
   transition: transform 300ms;
+  overflow: hidden;
+  .pie-color{
+    position: relative;
+  }
+  .wrap{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    right: 12px;
+    bottom: 130px;
+    display: flex;
+    justify-content: center;
+    }
+    .wrap-about{
+    position: absolute;
+    bottom: 60px;
+    width: 55px;
+    height: 60px;
+    left: calc(50% + 85px);
+    }
+  .pie-color1{
+  display: flex;
+  justify-content: flex-end;
+  align-items:flex-end;
+  }
+  .wrap-home{
+  position: absolute;
+  bottom: 31px;
+  width: 200px;
+  right: -5px;
+  height: 60px;
+  display: flex;
+  justify-content: flex-start;
+  }
 }
 .pie-color:hover {
-  opacity: 0.85;
+opacity: 0.85;
 }
 .pie-color:active {
-  opacity: 0.7;
+opacity: 0.7;
 }
 .pie1 {
-  clip-path: polygon(200px 200px, 344px 450px, 0 450px);
-  transition-delay: 30ms;
+clip-path: polygon(200px 200px, 344px 450px, 0 450px);
+transition-delay: 30ms;
 }
 .pie2 {
-  clip-path: polygon(200px 200px, 344px 450px, 450px 344px);
-  transition-delay: 60ms;
+clip-path: polygon(200px 200px, 344px 450px, 450px 344px);
+transition-delay: 60ms;
 }
 .pie3 {
-  clip-path: polygon(200px 200px, 450px 0, 450px 344px);
-  transition-delay: 90ms;
+clip-path: polygon(200px 200px, 450px 0, 450px 344px);
+transition-delay: 90ms;
 }
 .pie-color {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
+width: 100%;
+height: 100%;
+border-radius: 50%;
 }
 .pie-color1 {
-  background: linear-gradient(135deg, #6965b3, #4f4c9a);
-  clip-path: polygon(200px 200px, 344px 450px, 0 450px);
+background: linear-gradient(135deg, #6965b3, #4f4c9a);
+clip-path: polygon(200px 200px, 344px 450px, 0 450px);
 }
 .pie-color2 {
-  background: linear-gradient(135deg, #acaad5, #8a88c4);
-  clip-path: polygon(200px 200px, 344px 450px, 450px 344px);
+background: linear-gradient(135deg, #acaad5, #8a88c4);
+clip-path: polygon(200px 200px, 344px 450px, 450px 344px);
 }
 .pie-color3 {
-  background: linear-gradient(135deg, #cdcce6, #acaad5);
-  clip-path: polygon(200px 200px, 450px 0, 450px 344px);
+background: linear-gradient(135deg, #cdcce6, #acaad5);
+clip-path: polygon(200px 200px, 450px 0, 450px 344px);
 }
 .card {
-  left: 216px;
-  position: absolute;
-  top: 300px;
-  width: 46px;
+left: 216px;
+position: absolute;
+top: 300px;
+width: 46px;
 }
 .discount {
-  left: 288px;
-  position: absolute;
-  top: 258px;
-  width: 46px;
+left: 288px;
+position: absolute;
+top: 258px;
+width: 46px;
 }
 .cart {
-  left: 324px;
-  position: absolute;
-  top: 188px;
-  width: 46px;
+left: 324px;
+position: absolute;
+top: 188px;
+width: 46px;
 }
 .hamburger{
-  z-index: 100;
-  -webkit-tap-highlight-color: transparent;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 0 4px 5px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  height: 200px;
-  left: -100px;
-  position: fixed;
-  top: -100px;
-  width: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  @include hover-transition();
-  svg {
-    position: absolute;
-    right: 40px;
-    cursor: pointer;
-    height: 46px;
-    left: 58%;
-    top: 58%;
-    width: 46px;
-    margin-left: auto;
-    //right: 0;
-    transition: .5s ease-in-out;
-    z-index: 99;
-  }
-  &:hover{
-    @include hover-transition();
-    box-shadow: 0 0 4px 5px rgba(168, 166, 211, 0.5);
-  }
+z-index: 100;
+-webkit-tap-highlight-color: transparent;
+background: #fff;
+border-radius: 50%;
+box-shadow: 0 0 4px 5px rgba(0, 0, 0, 0.2);
+cursor: pointer;
+height: 200px;
+left: -100px;
+position: fixed;
+top: -100px;
+width: 200px;
+display: flex;
+justify-content: center;
+align-items: center;
+@include hover-transition();
+svg {
+position: absolute;
+right: 40px;
+cursor: pointer;
+height: 46px;
+left: 58%;
+top: 58%;
+width: 46px;
+margin-left: auto;
+//right: 0;
+transition: .5s ease-in-out;
+z-index: 99;
+}
+&:hover{
+@include hover-transition();
+box-shadow: 0 0 4px 5px rgba(168, 166, 211, 0.5);
+}
 }
 
 
 .hamburger path {
-  transition: transform 300ms;
+transition: transform 300ms;
 }
 .hamburger path:nth-child(1) {
-  transform-origin: 25% 29%;
+transform-origin: 25% 29%;
 }
 .hamburger path:nth-child(2) {
-  transform-origin: 50% 50%;
+transform-origin: 50% 50%;
 }
 .hamburger path:nth-child(3) {
-  transform-origin: 75% 72%;
+transform-origin: 75% 72%;
 }
 .hamburger path:nth-child(4) {
-  transform-origin: 75% 29%;
+transform-origin: 75% 29%;
 }
 .hamburger path:nth-child(5) {
-  transform-origin: 25% 72%;
+transform-origin: 25% 72%;
 }
 .open .pie {
-  transform: translateX(0) translateY(0);
+transform: translateX(0) translateY(0);
 }
 .open .hamburger path:nth-child(1) {
-  transform: rotate(45deg);
+transform: rotate(45deg);
 }
 .open .hamburger path:nth-child(2) {
-  transform: scaleX(0);
+transform: scaleX(0);
 }
 .open .hamburger path:nth-child(3) {
-  transform: rotate(45deg);
+transform: rotate(45deg);
 }
 .open .hamburger path:nth-child(4) {
-  transform: rotate(-45deg);
+transform: rotate(-45deg);
 }
 .open .hamburger path:nth-child(5) {
-  transform: rotate(-45deg);
+transform: rotate(-45deg);
 }

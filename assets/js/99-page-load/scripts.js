@@ -23,15 +23,14 @@ jQuery(document).ready(function($) {
         }
     });
 
-
-    $('.inview-fadeIn').on('inview', function (event, isInView) {
-        if (isInView) {
-            // element is now visible in the viewport
-            $(this).addClass("fadeIn");
-        } else {
-            // element has gone out of viewport
-        }
-    });
+    // $('.projects-text').on('inview', function(event, IsInView){
+    //     if (isInView) {
+    //         // element is now visible in the viewport
+    //         $(this).addClass('fixed');
+    //     } else {
+    //         // element has gone out of viewport
+    //     }
+    // });
 
     $('.portfolio-item').on('click', function(){
        target =  $(this).data('name');
@@ -40,6 +39,10 @@ jQuery(document).ready(function($) {
        $(openPop).addClass('open');
        $('body').addClass("fixed");
     });
+    $('.x').on('click', function(){
+        $('.port-popup').removeClass('open');
+        $('body').removeClass('fixed');
+    })
     $('body.fixed').on('click', function(){
         $('body').removeClass('fixed');
         $('.port-popup').removeClass('open');
