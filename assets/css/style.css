@@ -1410,7 +1410,6 @@ section.hero-section .print {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 100vh;
   width: 100%;
   -webkit-box-align: start;
       -ms-flex-align: start;
@@ -1420,6 +1419,9 @@ section.hero-section .print {
       -ms-flex-direction: column;
           flex-direction: column;
   overflow: hidden;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -1427,7 +1429,7 @@ section.hero-section .print {
 section.hero-section .print p {
   font-size: 30px;
   color: white;
-  opacity: 0.03;
+  opacity: 0.05;
   font-family: "Orbitron", monospace;
 }
 section.hero-section .print-wrapper {
@@ -1438,15 +1440,24 @@ section.hero-section .print-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
   z-index: 0;
   left: 0;
   top: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: white;
+}
+section.hero-section .blinker {
+  -webkit-animation: blinker 0.6s linear infinite;
+          animation: blinker 0.6s linear infinite;
 }
 section.hero-section .btn-wrap {
   z-index: 2;
