@@ -48,19 +48,25 @@ jQuery(document).ready(function($) {
         $('.port-popup').removeClass('open');
     });
 
+    $('.nav-name').on('mouseover', function(){
+        $('.animate').removeClass('active');
+        target =  $(this).data('name');
+        navItem = "." + target;
+        $(navItem).addClass('active');
+    });
+    $('.nav-name').on('mouseleave', function(){
+        $('.animate').removeClass('active');
+        $('.home').addClass('active');
+    });
 
-        return $(".print").typeText({
+    return $(".print").typeText({
             then: function() {
                 return this.typeText(".......................", {
                     typeSpeed: 250,
-                    then: function() {
-                        return this.typeText(".......................", {
-                            typeSpeed: 250
-                        });
-                    }
                 });
             }
         });
+
 
 
 });

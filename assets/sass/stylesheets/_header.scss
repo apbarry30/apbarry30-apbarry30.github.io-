@@ -237,6 +237,8 @@ header {
   overflow: hidden;
   transition: 0.6s all ease-in-out;
   .container {
+    box-shadow: 0 0 17px 7px rgba(200, 250, 255, .13);
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
