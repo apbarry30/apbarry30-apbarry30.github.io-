@@ -194,20 +194,20 @@ section.hero-section{
       font-size: 25px;
       color: white;
       line-height: 1em;
-      opacity: 0.0159;
+      opacity: 0.03;
       font-family: "Orbitron", monospace;
       position: relative;
     }
   }
   .print-wrapper{
-    position: absolute;
+    position: fixed;
     width: 100%;
     max-height: 100vh;
     height: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    z-index: 0;
+    z-index: -1;
     left: 0;
     top:0;
     flex-direction: column;

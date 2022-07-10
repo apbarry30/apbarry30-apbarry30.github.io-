@@ -1,4 +1,4 @@
-!function (a, b) {
+  !function (a, b) {
   "use strict";
 
   "object" == typeof module && "object" == typeof module.exports ? module.exports = a.document ? b(a, !0) : function (a) {
@@ -3732,85 +3732,10 @@ jQuery(document).ready(function ($) {
       });
     }
   });
-});
-!function (e) {
-  "function" == typeof define && define.amd ? define(["jquery"], e) : "object" == typeof exports ? module.exports = e(require("jquery")) : e(jQuery);
-}(function ($) {
-  function e() {
-    var e,
-        t,
-        n = {
-      height: f.innerHeight,
-      width: f.innerWidth
-    };
-    return n.height || !(e = l.compatMode) && $.support.boxModel || (t = "CSS1Compat" === e ? a : l.body, n = {
-      height: t.clientHeight,
-      width: t.clientWidth
-    }), n;
-  }
+}); 
 
-  function t() {
-    return {
-      top: f.pageYOffset || a.scrollTop || l.body.scrollTop,
-      left: f.pageXOffset || a.scrollLeft || l.body.scrollLeft
-    };
-  }
-
-  function n() {
-    if (i.length) {
-      var n = 0,
-          l = $.map(i, function (e) {
-        var t = e.data.selector,
-            n = e.$element;
-        return t ? n.find(t) : n;
-      });
-
-      for (o = o || e(), r = r || t(); n < i.length; n++) if ($.contains(a, l[n][0])) {
-        var f = $(l[n]),
-            d = {
-          height: f[0].offsetHeight,
-          width: f[0].offsetWidth
-        },
-            h = f.offset(),
-            c = f.data("inview");
-        if (!r || !o) return;
-        h.top + d.height > r.top && h.top < r.top + o.height && h.left + d.width > r.left && h.left < r.left + o.width ? c || f.data("inview", !0).trigger("inview", [!0]) : c && f.data("inview", !1).trigger("inview", [!1]);
-      }
-    }
-  }
-
-  var i = [],
-      o,
-      r,
-      l = document,
-      f = window,
-      a = l.documentElement,
-      d;
-  $.event.special.inview = {
-    add: function (e) {
-      i.push({
-        data: e,
-        $element: $(this),
-        element: this
-      }), !d && i.length && (d = setInterval(n, 250));
-    },
-    remove: function (e) {
-      for (var t = 0; t < i.length; t++) {
-        var n = i[t];
-
-        if (n.element === this && n.data.guid === e.guid) {
-          i.splice(t, 1);
-          break;
-        }
-      }
-
-      i.length || (clearInterval(d), d = null);
-    }
-  }, $(f).on("scroll resize scrollstop", function () {
-    o = r = null;
-  }), !a.addEventListener && a.attachEvent && a.attachEvent("onfocusin", function () {
-    r = null;
-  });
+var rellax = new Rellax('.rellax', {
+  breakpoints: [576, 768, 1201]
 });
 (function ($) {
   return $.fn.typeText = function () {
@@ -3977,3 +3902,82 @@ jQuery(document).ready(function ($) {
     });
   };
 }(jQuery);
+!function (e) {
+  "function" == typeof define && define.amd ? define(["jquery"], e) : "object" == typeof exports ? module.exports = e(require("jquery")) : e(jQuery);
+}(function ($) {
+  function e() {
+    var e,
+        t,
+        n = {
+      height: f.innerHeight,
+      width: f.innerWidth
+    };
+    return n.height || !(e = l.compatMode) && $.support.boxModel || (t = "CSS1Compat" === e ? a : l.body, n = {
+      height: t.clientHeight,
+      width: t.clientWidth
+    }), n;
+  }
+
+  function t() {
+    return {
+      top: f.pageYOffset || a.scrollTop || l.body.scrollTop,
+      left: f.pageXOffset || a.scrollLeft || l.body.scrollLeft
+    };
+  }
+
+  function n() {
+    if (i.length) {
+      var n = 0,
+          l = $.map(i, function (e) {
+        var t = e.data.selector,
+            n = e.$element;
+        return t ? n.find(t) : n;
+      });
+
+      for (o = o || e(), r = r || t(); n < i.length; n++) if ($.contains(a, l[n][0])) {
+        var f = $(l[n]),
+            d = {
+          height: f[0].offsetHeight,
+          width: f[0].offsetWidth
+        },
+            h = f.offset(),
+            c = f.data("inview");
+        if (!r || !o) return;
+        h.top + d.height > r.top && h.top < r.top + o.height && h.left + d.width > r.left && h.left < r.left + o.width ? c || f.data("inview", !0).trigger("inview", [!0]) : c && f.data("inview", !1).trigger("inview", [!1]);
+      }
+    }
+  }
+
+  var i = [],
+      o,
+      r,
+      l = document,
+      f = window,
+      a = l.documentElement,
+      d;
+  $.event.special.inview = {
+    add: function (e) {
+      i.push({
+        data: e,
+        $element: $(this),
+        element: this
+      }), !d && i.length && (d = setInterval(n, 250));
+    },
+    remove: function (e) {
+      for (var t = 0; t < i.length; t++) {
+        var n = i[t];
+
+        if (n.element === this && n.data.guid === e.guid) {
+          i.splice(t, 1);
+          break;
+        }
+      }
+
+      i.length || (clearInterval(d), d = null);
+    }
+  }, $(f).on("scroll resize scrollstop", function () {
+    o = r = null;
+  }), !a.addEventListener && a.attachEvent && a.attachEvent("onfocusin", function () {
+    r = null;
+  });
+});
