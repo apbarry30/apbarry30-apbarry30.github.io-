@@ -271,8 +271,8 @@ strong {
 .sites {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column-gap: 20px;
-  grid-row-gap: 30px;
+  grid-column-gap: 40px;
+  grid-row-gap: 50px;
 }
 
 section.sites-section {
@@ -303,8 +303,11 @@ section.sites-section {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
+  background: radial-gradient(ellipse at bottom, #A8A6D3, #090a0f);
   font-weight: 300;
+}
+.buttons{
+  margin-top:20px;
 }
 
 .all {
@@ -452,11 +455,12 @@ section.sites-section {
     background: $accent;
     color: $primary;
     @include hover-transition();
-  }
+  };
 }
 
 .port-popup {
   //display: none;
+  z-index:-1
   transition: 0.4s ease-in-out;
   height: 0;
   width: 0;
@@ -474,6 +478,7 @@ section.sites-section {
   }
 
   &.open {
+    z-index:5;
     opacity: 100%;
     overflow: auto;
     z-index: 10;
@@ -541,16 +546,27 @@ section.sites-section {
 }
 
 .portfolio-item {
-  max-height: 300px;
+  max-height: 340px;
   overflow: hidden;
   position: relative;
   cursor: pointer;
+  border-radius: 10px;
+  border: 2px solid $accent;
 
   &:nth-of-type(even) {
     transition-delay: 0.5s;
   }
-
-  .info-wrap {
+  .info-wrap{
+    position: absolute;
+    background: $accent;
+    width: 100%;
+    padding: 10px;
+    bottom: 0;
+    h3{
+      color:white;
+    }
+  }
+  .see-more {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -569,7 +585,7 @@ section.sites-section {
   }
 
   &:hover {
-    .info-wrap {
+    .see-more {
       height: 100%;
       transition: 0.4s ease-in-out;
       background: #7e84f9;

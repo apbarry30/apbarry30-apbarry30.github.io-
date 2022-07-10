@@ -292,9 +292,11 @@ header {
     ul.menu{
       display: flex;
       position: absolute;
-      right: 87px;
-      bottom: 120px;
       transform: rotate(-45deg);
+      transform-origin: center;
+      right: 90px;
+      max-width: 72px;
+      bottom: 110px;
       li{
         list-style-type: none;
         font-size: 25px;
