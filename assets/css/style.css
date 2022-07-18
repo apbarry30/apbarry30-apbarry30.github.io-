@@ -639,6 +639,7 @@ section.sites-section .image-hover:hover {
 }
 
 .port-popup {
+  z-index: -1;
   -webkit-transition: 0.4s ease-in-out;
   transition: 0.4s ease-in-out;
   height: 0;
@@ -660,6 +661,7 @@ section.sites-section .image-hover:hover {
   opacity: 0;
 }
 .port-popup.open {
+  z-index: 5;
   opacity: 100%;
   overflow: auto;
   z-index: 10;

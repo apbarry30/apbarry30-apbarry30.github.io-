@@ -1,4 +1,4 @@
-  !function (a, b) {
+!function (a, b) {
   "use strict";
 
   "object" == typeof module && "object" == typeof module.exports ? module.exports = a.document ? b(a, !0) : function (a) {
@@ -3684,6 +3684,85 @@
     return a.$ === r && (a.$ = Ub), b && a.jQuery === r && (a.jQuery = Tb), r;
   }, b || (a.jQuery = a.$ = r), r;
 });
+!function (e) {
+  "function" == typeof define && define.amd ? define(["jquery"], e) : "object" == typeof exports ? module.exports = e(require("jquery")) : e(jQuery);
+}(function ($) {
+  function e() {
+    var e,
+        t,
+        n = {
+      height: f.innerHeight,
+      width: f.innerWidth
+    };
+    return n.height || !(e = l.compatMode) && $.support.boxModel || (t = "CSS1Compat" === e ? a : l.body, n = {
+      height: t.clientHeight,
+      width: t.clientWidth
+    }), n;
+  }
+
+  function t() {
+    return {
+      top: f.pageYOffset || a.scrollTop || l.body.scrollTop,
+      left: f.pageXOffset || a.scrollLeft || l.body.scrollLeft
+    };
+  }
+
+  function n() {
+    if (i.length) {
+      var n = 0,
+          l = $.map(i, function (e) {
+        var t = e.data.selector,
+            n = e.$element;
+        return t ? n.find(t) : n;
+      });
+
+      for (o = o || e(), r = r || t(); n < i.length; n++) if ($.contains(a, l[n][0])) {
+        var f = $(l[n]),
+            d = {
+          height: f[0].offsetHeight,
+          width: f[0].offsetWidth
+        },
+            h = f.offset(),
+            c = f.data("inview");
+        if (!r || !o) return;
+        h.top + d.height > r.top && h.top < r.top + o.height && h.left + d.width > r.left && h.left < r.left + o.width ? c || f.data("inview", !0).trigger("inview", [!0]) : c && f.data("inview", !1).trigger("inview", [!1]);
+      }
+    }
+  }
+
+  var i = [],
+      o,
+      r,
+      l = document,
+      f = window,
+      a = l.documentElement,
+      d;
+  $.event.special.inview = {
+    add: function (e) {
+      i.push({
+        data: e,
+        $element: $(this),
+        element: this
+      }), !d && i.length && (d = setInterval(n, 250));
+    },
+    remove: function (e) {
+      for (var t = 0; t < i.length; t++) {
+        var n = i[t];
+
+        if (n.element === this && n.data.guid === e.guid) {
+          i.splice(t, 1);
+          break;
+        }
+      }
+
+      i.length || (clearInterval(d), d = null);
+    }
+  }, $(f).on("scroll resize scrollstop", function () {
+    o = r = null;
+  }), !a.addEventListener && a.attachEvent && a.attachEvent("onfocusin", function () {
+    r = null;
+  });
+});
 jQuery(document).ready(function ($) {
   $(".hamburger").on("click", function () {
     $(this).toggleClass("open");
@@ -3902,82 +3981,686 @@ var rellax = new Rellax('.rellax', {
     });
   };
 }(jQuery);
-!function (e) {
-  "function" == typeof define && define.amd ? define(["jquery"], e) : "object" == typeof exports ? module.exports = e(require("jquery")) : e(jQuery);
-}(function ($) {
-  function e() {
-    var e,
-        t,
-        n = {
-      height: f.innerHeight,
-      width: f.innerWidth
-    };
-    return n.height || !(e = l.compatMode) && $.support.boxModel || (t = "CSS1Compat" === e ? a : l.body, n = {
-      height: t.clientHeight,
-      width: t.clientWidth
-    }), n;
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define([], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory();
+  } else {
+    root.Rellax = factory();
   }
+})(typeof window !== "undefined" ? window : global, function () {
+  var Rellax = function (el, options) {
+    "use strict";
 
-  function t() {
-    return {
-      top: f.pageYOffset || a.scrollTop || l.body.scrollTop,
-      left: f.pageXOffset || a.scrollLeft || l.body.scrollLeft
-    };
-  }
+    var self = Object.create(Rellax.prototype);
+    var posY = 0;
+    var screenY = 0;
+    var posX = 0;
+    var screenX = 0;
+    var blocks = [];
+    var pause = true; 
 
-  function n() {
-    if (i.length) {
-      var n = 0,
-          l = $.map(i, function (e) {
-        var t = e.data.selector,
-            n = e.$element;
-        return t ? n.find(t) : n;
+    var loop = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame || function (callback) {
+      return setTimeout(callback, 1000 / 60);
+    }; 
+
+
+    var loopId = null; 
+
+    var supportsPassive = false;
+
+    try {
+      var opts = Object.defineProperty({}, 'passive', {
+        get: function () {
+          supportsPassive = true;
+        }
       });
+      window.addEventListener("testPassive", null, opts);
+      window.removeEventListener("testPassive", null, opts);
+    } catch (e) {} 
 
-      for (o = o || e(), r = r || t(); n < i.length; n++) if ($.contains(a, l[n][0])) {
-        var f = $(l[n]),
-            d = {
-          height: f[0].offsetHeight,
-          width: f[0].offsetWidth
-        },
-            h = f.offset(),
-            c = f.data("inview");
-        if (!r || !o) return;
-        h.top + d.height > r.top && h.top < r.top + o.height && h.left + d.width > r.left && h.left < r.left + o.width ? c || f.data("inview", !0).trigger("inview", [!0]) : c && f.data("inview", !1).trigger("inview", [!1]);
-      }
-    }
-  }
 
-  var i = [],
-      o,
-      r,
-      l = document,
-      f = window,
-      a = l.documentElement,
-      d;
-  $.event.special.inview = {
-    add: function (e) {
-      i.push({
-        data: e,
-        $element: $(this),
-        element: this
-      }), !d && i.length && (d = setInterval(n, 250));
-    },
-    remove: function (e) {
-      for (var t = 0; t < i.length; t++) {
-        var n = i[t];
+    var clearLoop = window.cancelAnimationFrame || window.mozCancelAnimationFrame || clearTimeout; 
 
-        if (n.element === this && n.data.guid === e.guid) {
-          i.splice(t, 1);
-          break;
+    var transformProp = window.transformProp || function () {
+      var testEl = document.createElement('div');
+
+      if (testEl.style.transform === null) {
+        var vendors = ['Webkit', 'Moz', 'ms'];
+
+        for (var vendor in vendors) {
+          if (testEl.style[vendors[vendor] + 'Transform'] !== undefined) {
+            return vendors[vendor] + 'Transform';
+          }
         }
       }
 
-      i.length || (clearInterval(d), d = null);
+      return 'transform';
+    }(); 
+
+
+    self.options = {
+      speed: -2,
+      verticalSpeed: null,
+      horizontalSpeed: null,
+      breakpoints: [576, 768, 1201],
+      center: false,
+      wrapper: null,
+      relativeToWrapper: false,
+      round: true,
+      vertical: true,
+      horizontal: false,
+      verticalScrollAxis: "y",
+      horizontalScrollAxis: "x",
+      callback: function () {}
+    }; 
+
+    if (options) {
+      Object.keys(options).forEach(function (key) {
+        self.options[key] = options[key];
+      });
     }
-  }, $(f).on("scroll resize scrollstop", function () {
-    o = r = null;
-  }), !a.addEventListener && a.attachEvent && a.attachEvent("onfocusin", function () {
-    r = null;
-  });
+
+    function validateCustomBreakpoints() {
+      if (self.options.breakpoints.length === 3 && Array.isArray(self.options.breakpoints)) {
+        var isAscending = true;
+        var isNumerical = true;
+        var lastVal;
+        self.options.breakpoints.forEach(function (i) {
+          if (typeof i !== 'number') isNumerical = false;
+
+          if (lastVal !== null) {
+            if (i < lastVal) isAscending = false;
+          }
+
+          lastVal = i;
+        });
+        if (isAscending && isNumerical) return;
+      } 
+
+
+      self.options.breakpoints = [576, 768, 1201];
+      console.warn("Rellax: You must pass an array of 3 numbers in ascending order to the breakpoints option. Defaults reverted");
+    }
+
+    if (options && options.breakpoints) {
+      validateCustomBreakpoints();
+    } 
+
+
+    if (!el) {
+      el = '.rellax';
+    } 
+
+
+    var elements = typeof el === 'string' ? document.querySelectorAll(el) : [el]; 
+
+    if (elements.length > 0) {
+      self.elems = elements;
+    } 
+    else {
+        console.warn("Rellax: The elements you're trying to select don't exist.");
+        return;
+      } 
+
+
+    if (self.options.wrapper) {
+      if (!self.options.wrapper.nodeType) {
+        var wrapper = document.querySelector(self.options.wrapper);
+
+        if (wrapper) {
+          self.options.wrapper = wrapper;
+        } else {
+          console.warn("Rellax: The wrapper you're trying to use doesn't exist.");
+          return;
+        }
+      }
+    } 
+
+
+    var currentBreakpoint; 
+
+    var getCurrentBreakpoint = function (w) {
+      var bp = self.options.breakpoints;
+      if (w < bp[0]) return 'xs';
+      if (w >= bp[0] && w < bp[1]) return 'sm';
+      if (w >= bp[1] && w < bp[2]) return 'md';
+      return 'lg';
+    }; 
+
+
+    var cacheBlocks = function () {
+      for (var i = 0; i < self.elems.length; i++) {
+        var block = createBlock(self.elems[i]);
+        blocks.push(block);
+      }
+    }; 
+
+
+    var init = function () {
+      for (var i = 0; i < blocks.length; i++) {
+        self.elems[i].style.cssText = blocks[i].style;
+      }
+
+      blocks = [];
+      screenY = window.innerHeight;
+      screenX = window.innerWidth;
+      currentBreakpoint = getCurrentBreakpoint(screenX);
+      setPosition();
+      cacheBlocks();
+      animate(); 
+
+      if (pause) {
+        window.addEventListener('resize', init);
+        pause = false; 
+
+        update();
+      }
+    }; 
+
+
+    var createBlock = function (el) {
+      var dataPercentage = el.getAttribute('data-rellax-percentage');
+      var dataSpeed = el.getAttribute('data-rellax-speed');
+      var dataXsSpeed = el.getAttribute('data-rellax-xs-speed');
+      var dataMobileSpeed = el.getAttribute('data-rellax-mobile-speed');
+      var dataTabletSpeed = el.getAttribute('data-rellax-tablet-speed');
+      var dataDesktopSpeed = el.getAttribute('data-rellax-desktop-speed');
+      var dataVerticalSpeed = el.getAttribute('data-rellax-vertical-speed');
+      var dataHorizontalSpeed = el.getAttribute('data-rellax-horizontal-speed');
+      var dataVericalScrollAxis = el.getAttribute('data-rellax-vertical-scroll-axis');
+      var dataHorizontalScrollAxis = el.getAttribute('data-rellax-horizontal-scroll-axis');
+      var dataZindex = el.getAttribute('data-rellax-zindex') || 0;
+      var dataMin = el.getAttribute('data-rellax-min');
+      var dataMax = el.getAttribute('data-rellax-max');
+      var dataMinX = el.getAttribute('data-rellax-min-x');
+      var dataMaxX = el.getAttribute('data-rellax-max-x');
+      var dataMinY = el.getAttribute('data-rellax-min-y');
+      var dataMaxY = el.getAttribute('data-rellax-max-y');
+      var mapBreakpoints;
+      var breakpoints = true;
+
+      if (!dataXsSpeed && !dataMobileSpeed && !dataTabletSpeed && !dataDesktopSpeed) {
+        breakpoints = false;
+      } else {
+        mapBreakpoints = {
+          'xs': dataXsSpeed,
+          'sm': dataMobileSpeed,
+          'md': dataTabletSpeed,
+          'lg': dataDesktopSpeed
+        };
+      } 
+
+
+      var wrapperPosY = self.options.wrapper ? self.options.wrapper.scrollTop : window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop; 
+
+      if (self.options.relativeToWrapper) {
+        var scrollPosY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        wrapperPosY = scrollPosY - self.options.wrapper.offsetTop;
+      }
+
+      var posY = self.options.vertical ? dataPercentage || self.options.center ? wrapperPosY : 0 : 0;
+      var posX = self.options.horizontal ? dataPercentage || self.options.center ? self.options.wrapper ? self.options.wrapper.scrollLeft : window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft : 0 : 0;
+      var blockTop = posY + el.getBoundingClientRect().top;
+      var blockHeight = el.clientHeight || el.offsetHeight || el.scrollHeight;
+      var blockLeft = posX + el.getBoundingClientRect().left;
+      var blockWidth = el.clientWidth || el.offsetWidth || el.scrollWidth; 
+
+      var percentageY = dataPercentage ? dataPercentage : (posY - blockTop + screenY) / (blockHeight + screenY);
+      var percentageX = dataPercentage ? dataPercentage : (posX - blockLeft + screenX) / (blockWidth + screenX);
+
+      if (self.options.center) {
+        percentageX = 0.5;
+        percentageY = 0.5;
+      } 
+
+
+      var speed = breakpoints && mapBreakpoints[currentBreakpoint] !== null ? Number(mapBreakpoints[currentBreakpoint]) : dataSpeed ? dataSpeed : self.options.speed;
+      var verticalSpeed = dataVerticalSpeed ? dataVerticalSpeed : self.options.verticalSpeed;
+      var horizontalSpeed = dataHorizontalSpeed ? dataHorizontalSpeed : self.options.horizontalSpeed; 
+
+      var verticalScrollAxis = dataVericalScrollAxis ? dataVericalScrollAxis : self.options.verticalScrollAxis;
+      var horizontalScrollAxis = dataHorizontalScrollAxis ? dataHorizontalScrollAxis : self.options.horizontalScrollAxis;
+      var bases = updatePosition(percentageX, percentageY, speed, verticalSpeed, horizontalSpeed); 
+
+      var style = el.style.cssText;
+      var transform = ''; 
+
+      var searchResult = /transform\s*:/i.exec(style);
+
+      if (searchResult) {
+        var index = searchResult.index; 
+
+        var trimmedStyle = style.slice(index);
+        var delimiter = trimmedStyle.indexOf(';'); 
+
+        if (delimiter) {
+          transform = " " + trimmedStyle.slice(11, delimiter).replace(/\s/g, '');
+        } else {
+          transform = " " + trimmedStyle.slice(11).replace(/\s/g, '');
+        }
+      }
+
+      return {
+        baseX: bases.x,
+        baseY: bases.y,
+        top: blockTop,
+        left: blockLeft,
+        height: blockHeight,
+        width: blockWidth,
+        speed: speed,
+        verticalSpeed: verticalSpeed,
+        horizontalSpeed: horizontalSpeed,
+        verticalScrollAxis: verticalScrollAxis,
+        horizontalScrollAxis: horizontalScrollAxis,
+        style: style,
+        transform: transform,
+        zindex: dataZindex,
+        min: dataMin,
+        max: dataMax,
+        minX: dataMinX,
+        maxX: dataMaxX,
+        minY: dataMinY,
+        maxY: dataMaxY
+      };
+    }; 
+
+
+    var setPosition = function () {
+      var oldY = posY;
+      var oldX = posX;
+      posY = self.options.wrapper ? self.options.wrapper.scrollTop : (document.documentElement || document.body.parentNode || document.body).scrollTop || window.pageYOffset;
+      posX = self.options.wrapper ? self.options.wrapper.scrollLeft : (document.documentElement || document.body.parentNode || document.body).scrollLeft || window.pageXOffset; 
+
+      if (self.options.relativeToWrapper) {
+        var scrollPosY = (document.documentElement || document.body.parentNode || document.body).scrollTop || window.pageYOffset;
+        posY = scrollPosY - self.options.wrapper.offsetTop;
+      }
+
+      if (oldY != posY && self.options.vertical) {
+        return true;
+      }
+
+      if (oldX != posX && self.options.horizontal) {
+        return true;
+      } 
+
+
+      return false;
+    }; 
+
+
+    var updatePosition = function (percentageX, percentageY, speed, verticalSpeed, horizontalSpeed) {
+      var result = {};
+      var valueX = (horizontalSpeed ? horizontalSpeed : speed) * (100 * (1 - percentageX));
+      var valueY = (verticalSpeed ? verticalSpeed : speed) * (100 * (1 - percentageY));
+      result.x = self.options.round ? Math.round(valueX) : Math.round(valueX * 100) / 100;
+      result.y = self.options.round ? Math.round(valueY) : Math.round(valueY * 100) / 100;
+      return result;
+    }; 
+
+
+    var deferredUpdate = function () {
+      window.removeEventListener('resize', deferredUpdate);
+      window.removeEventListener('orientationchange', deferredUpdate);
+      (self.options.wrapper ? self.options.wrapper : window).removeEventListener('scroll', deferredUpdate);
+      (self.options.wrapper ? self.options.wrapper : document).removeEventListener('touchmove', deferredUpdate); 
+
+      loopId = loop(update);
+    }; 
+
+
+    var update = function () {
+      if (setPosition() && pause === false) {
+        animate(); 
+
+        loopId = loop(update);
+      } else {
+        loopId = null; 
+
+        window.addEventListener('resize', deferredUpdate);
+        window.addEventListener('orientationchange', deferredUpdate);
+        (self.options.wrapper ? self.options.wrapper : window).addEventListener('scroll', deferredUpdate, supportsPassive ? {
+          passive: true
+        } : false);
+        (self.options.wrapper ? self.options.wrapper : document).addEventListener('touchmove', deferredUpdate, supportsPassive ? {
+          passive: true
+        } : false);
+      }
+    }; 
+
+
+    var animate = function () {
+      var positions;
+
+      for (var i = 0; i < self.elems.length; i++) {
+        var verticalScrollAxis = blocks[i].verticalScrollAxis.toLowerCase();
+        var horizontalScrollAxis = blocks[i].horizontalScrollAxis.toLowerCase();
+        var verticalScrollX = verticalScrollAxis.indexOf("x") != -1 ? posY : 0;
+        var verticalScrollY = verticalScrollAxis.indexOf("y") != -1 ? posY : 0;
+        var horizontalScrollX = horizontalScrollAxis.indexOf("x") != -1 ? posX : 0;
+        var horizontalScrollY = horizontalScrollAxis.indexOf("y") != -1 ? posX : 0;
+        var percentageY = (verticalScrollY + horizontalScrollY - blocks[i].top + screenY) / (blocks[i].height + screenY);
+        var percentageX = (verticalScrollX + horizontalScrollX - blocks[i].left + screenX) / (blocks[i].width + screenX); 
+
+        positions = updatePosition(percentageX, percentageY, blocks[i].speed, blocks[i].verticalSpeed, blocks[i].horizontalSpeed);
+        var positionY = positions.y - blocks[i].baseY;
+        var positionX = positions.x - blocks[i].baseX; 
+
+        if (blocks[i].min !== null) {
+          if (self.options.vertical && !self.options.horizontal) {
+            positionY = positionY <= blocks[i].min ? blocks[i].min : positionY;
+          }
+
+          if (self.options.horizontal && !self.options.vertical) {
+            positionX = positionX <= blocks[i].min ? blocks[i].min : positionX;
+          }
+        } 
+
+
+        if (blocks[i].minY != null) {
+          positionY = positionY <= blocks[i].minY ? blocks[i].minY : positionY;
+        }
+
+        if (blocks[i].minX != null) {
+          positionX = positionX <= blocks[i].minX ? blocks[i].minX : positionX;
+        } 
+
+
+        if (blocks[i].max !== null) {
+          if (self.options.vertical && !self.options.horizontal) {
+            positionY = positionY >= blocks[i].max ? blocks[i].max : positionY;
+          }
+
+          if (self.options.horizontal && !self.options.vertical) {
+            positionX = positionX >= blocks[i].max ? blocks[i].max : positionX;
+          }
+        } 
+
+
+        if (blocks[i].maxY != null) {
+          positionY = positionY >= blocks[i].maxY ? blocks[i].maxY : positionY;
+        }
+
+        if (blocks[i].maxX != null) {
+          positionX = positionX >= blocks[i].maxX ? blocks[i].maxX : positionX;
+        }
+
+        var zindex = blocks[i].zindex; 
+
+        var translate = 'translate3d(' + (self.options.horizontal ? positionX : '0') + 'px,' + (self.options.vertical ? positionY : '0') + 'px,' + zindex + 'px) ' + blocks[i].transform;
+        self.elems[i].style[transformProp] = translate;
+      }
+
+      self.options.callback(positions);
+    };
+
+    self.destroy = function () {
+      for (var i = 0; i < self.elems.length; i++) {
+        self.elems[i].style.cssText = blocks[i].style;
+      } 
+
+
+      if (!pause) {
+        window.removeEventListener('resize', init);
+        pause = true;
+      } 
+
+
+      clearLoop(loopId);
+      loopId = null;
+    }; 
+
+
+    init(); 
+
+    self.refresh = init;
+    return self;
+  };
+
+  return Rellax;
+});
+(function (q, g) {
+  "function" === typeof define && define.amd ? define([], g) : "object" === typeof module && module.exports ? module.exports = g() : q.Rellax = g();
+})("undefined" !== typeof window ? window : global, function () {
+  var q = function (g, u) {
+    function C() {
+      if (3 === a.options.breakpoints.length && Array.isArray(a.options.breakpoints)) {
+        var f = !0,
+            c = !0,
+            b;
+        a.options.breakpoints.forEach(function (a) {
+          "number" !== typeof a && (c = !1);
+          null !== b && a < b && (f = !1);
+          b = a;
+        });
+        if (f && c) return;
+      }
+
+      a.options.breakpoints = [576, 768, 1201];
+      console.warn("Rellax: You must pass an array of 3 numbers in ascending order to the breakpoints option. Defaults reverted");
+    }
+
+    var a = Object.create(q.prototype),
+        l = 0,
+        v = 0,
+        m = 0,
+        n = 0,
+        d = [],
+        w = !0,
+        A = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame || function (a) {
+      return setTimeout(a, 1E3 / 60);
+    },
+        p = null,
+        x = !1;
+
+    try {
+      var k = Object.defineProperty({}, "passive", {
+        get: function () {
+          x = !0;
+        }
+      });
+      window.addEventListener("testPassive", null, k);
+      window.removeEventListener("testPassive", null, k);
+    } catch (f) {}
+
+    var D = window.cancelAnimationFrame || window.mozCancelAnimationFrame || clearTimeout,
+        E = window.transformProp || function () {
+      var a = document.createElement("div");
+
+      if (null === a.style.transform) {
+        var c = ["Webkit", "Moz", "ms"],
+            b;
+
+        for (b in c) if (void 0 !== a.style[c[b] + "Transform"]) return c[b] + "Transform";
+      }
+
+      return "transform";
+    }();
+
+    a.options = {
+      speed: -2,
+      verticalSpeed: null,
+      horizontalSpeed: null,
+      breakpoints: [576, 768, 1201],
+      center: !1,
+      wrapper: null,
+      relativeToWrapper: !1,
+      round: !0,
+      vertical: !0,
+      horizontal: !1,
+      verticalScrollAxis: "y",
+      horizontalScrollAxis: "x",
+      callback: function () {}
+    };
+    u && Object.keys(u).forEach(function (d) {
+      a.options[d] = u[d];
+    });
+    u && u.breakpoints && C();
+    g || (g = ".rellax");
+    k = "string" === typeof g ? document.querySelectorAll(g) : [g];
+
+    if (0 < k.length) {
+      a.elems = k;
+      if (a.options.wrapper && !a.options.wrapper.nodeType) if (k = document.querySelector(a.options.wrapper)) a.options.wrapper = k;else {
+        console.warn("Rellax: The wrapper you're trying to use doesn't exist.");
+        return;
+      }
+
+      var F,
+          B = function () {
+        for (var f = 0; f < d.length; f++) a.elems[f].style.cssText = d[f].style;
+
+        d = [];
+        v = window.innerHeight;
+        n = window.innerWidth;
+        f = a.options.breakpoints;
+        F = n < f[0] ? "xs" : n >= f[0] && n < f[1] ? "sm" : n >= f[1] && n < f[2] ? "md" : "lg";
+        H();
+
+        for (f = 0; f < a.elems.length; f++) {
+          var c = void 0,
+              b = a.elems[f],
+              e = b.getAttribute("data-rellax-percentage"),
+              y = b.getAttribute("data-rellax-speed"),
+              t = b.getAttribute("data-rellax-xs-speed"),
+              g = b.getAttribute("data-rellax-mobile-speed"),
+              h = b.getAttribute("data-rellax-tablet-speed"),
+              k = b.getAttribute("data-rellax-desktop-speed"),
+              l = b.getAttribute("data-rellax-vertical-speed"),
+              m = b.getAttribute("data-rellax-horizontal-speed"),
+              p = b.getAttribute("data-rellax-vertical-scroll-axis"),
+              q = b.getAttribute("data-rellax-horizontal-scroll-axis"),
+              u = b.getAttribute("data-rellax-zindex") || 0,
+              x = b.getAttribute("data-rellax-min"),
+              A = b.getAttribute("data-rellax-max"),
+              C = b.getAttribute("data-rellax-min-x"),
+              D = b.getAttribute("data-rellax-max-x"),
+              E = b.getAttribute("data-rellax-min-y"),
+              L = b.getAttribute("data-rellax-max-y"),
+              r = !0;
+          t || g || h || k ? c = {
+            xs: t,
+            sm: g,
+            md: h,
+            lg: k
+          } : r = !1;
+          t = a.options.wrapper ? a.options.wrapper.scrollTop : window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+          a.options.relativeToWrapper && (t = (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop) - a.options.wrapper.offsetTop);
+          var z = a.options.vertical ? e || a.options.center ? t : 0 : 0,
+              I = a.options.horizontal ? e || a.options.center ? a.options.wrapper ? a.options.wrapper.scrollLeft : window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft : 0 : 0;
+          t = z + b.getBoundingClientRect().top;
+          g = b.clientHeight || b.offsetHeight || b.scrollHeight;
+          h = I + b.getBoundingClientRect().left;
+          k = b.clientWidth || b.offsetWidth || b.scrollWidth;
+          z = e ? e : (z - t + v) / (g + v);
+          e = e ? e : (I - h + n) / (k + n);
+          a.options.center && (z = e = .5);
+          c = r && null !== c[F] ? Number(c[F]) : y ? y : a.options.speed;
+          l = l ? l : a.options.verticalSpeed;
+          m = m ? m : a.options.horizontalSpeed;
+          p = p ? p : a.options.verticalScrollAxis;
+          q = q ? q : a.options.horizontalScrollAxis;
+          y = J(e, z, c, l, m);
+          b = b.style.cssText;
+          r = "";
+          if (e = /transform\s*:/i.exec(b)) r = b.slice(e.index), r = (e = r.indexOf(";")) ? " " + r.slice(11, e).replace(/\s/g, "") : " " + r.slice(11).replace(/\s/g, "");
+          d.push({
+            baseX: y.x,
+            baseY: y.y,
+            top: t,
+            left: h,
+            height: g,
+            width: k,
+            speed: c,
+            verticalSpeed: l,
+            horizontalSpeed: m,
+            verticalScrollAxis: p,
+            horizontalScrollAxis: q,
+            style: b,
+            transform: r,
+            zindex: u,
+            min: x,
+            max: A,
+            minX: C,
+            maxX: D,
+            minY: E,
+            maxY: L
+          });
+        }
+
+        K();
+        w && (window.addEventListener("resize", B), w = !1, G());
+      },
+          H = function () {
+        var d = l,
+            c = m;
+        l = a.options.wrapper ? a.options.wrapper.scrollTop : (document.documentElement || document.body.parentNode || document.body).scrollTop || window.pageYOffset;
+        m = a.options.wrapper ? a.options.wrapper.scrollLeft : (document.documentElement || document.body.parentNode || document.body).scrollLeft || window.pageXOffset;
+        a.options.relativeToWrapper && (l = ((document.documentElement || document.body.parentNode || document.body).scrollTop || window.pageYOffset) - a.options.wrapper.offsetTop);
+        return d != l && a.options.vertical || c != m && a.options.horizontal ? !0 : !1;
+      },
+          J = function (d, c, b, e, g) {
+        var f = {};
+        d = 100 * (g ? g : b) * (1 - d);
+        c = 100 * (e ? e : b) * (1 - c);
+        f.x = a.options.round ? Math.round(d) : Math.round(100 * d) / 100;
+        f.y = a.options.round ? Math.round(c) : Math.round(100 * c) / 100;
+        return f;
+      },
+          h = function () {
+        window.removeEventListener("resize", h);
+        window.removeEventListener("orientationchange", h);
+        (a.options.wrapper ? a.options.wrapper : window).removeEventListener("scroll", h);
+        (a.options.wrapper ? a.options.wrapper : document).removeEventListener("touchmove", h);
+        p = A(G);
+      },
+          G = function () {
+        H() && !1 === w ? (K(), p = A(G)) : (p = null, window.addEventListener("resize", h), window.addEventListener("orientationchange", h), (a.options.wrapper ? a.options.wrapper : window).addEventListener("scroll", h, x ? {
+          passive: !0
+        } : !1), (a.options.wrapper ? a.options.wrapper : document).addEventListener("touchmove", h, x ? {
+          passive: !0
+        } : !1));
+      },
+          K = function () {
+        for (var f, c = 0; c < a.elems.length; c++) {
+          var b = d[c].verticalScrollAxis.toLowerCase(),
+              e = d[c].horizontalScrollAxis.toLowerCase();
+          f = -1 != b.indexOf("x") ? l : 0;
+          b = -1 != b.indexOf("y") ? l : 0;
+          var g = -1 != e.indexOf("x") ? m : 0;
+          e = -1 != e.indexOf("y") ? m : 0;
+          f = J((f + g - d[c].left + n) / (d[c].width + n), (b + e - d[c].top + v) / (d[c].height + v), d[c].speed, d[c].verticalSpeed, d[c].horizontalSpeed);
+          e = f.y - d[c].baseY;
+          b = f.x - d[c].baseX;
+          null !== d[c].min && (a.options.vertical && !a.options.horizontal && (e = e <= d[c].min ? d[c].min : e), a.options.horizontal && !a.options.vertical && (b = b <= d[c].min ? d[c].min : b));
+          null != d[c].minY && (e = e <= d[c].minY ? d[c].minY : e);
+          null != d[c].minX && (b = b <= d[c].minX ? d[c].minX : b);
+          null !== d[c].max && (a.options.vertical && !a.options.horizontal && (e = e >= d[c].max ? d[c].max : e), a.options.horizontal && !a.options.vertical && (b = b >= d[c].max ? d[c].max : b));
+          null != d[c].maxY && (e = e >= d[c].maxY ? d[c].maxY : e);
+          null != d[c].maxX && (b = b >= d[c].maxX ? d[c].maxX : b);
+          a.elems[c].style[E] = "translate3d(" + (a.options.horizontal ? b : "0") + "px," + (a.options.vertical ? e : "0") + "px," + d[c].zindex + "px) " + d[c].transform;
+        }
+
+        a.options.callback(f);
+      };
+
+      a.destroy = function () {
+        for (var f = 0; f < a.elems.length; f++) a.elems[f].style.cssText = d[f].style;
+
+        w || (window.removeEventListener("resize", B), w = !0);
+        D(p);
+        p = null;
+      };
+
+      B();
+      a.refresh = B;
+      return a;
+    }
+
+    console.warn("Rellax: The elements you're trying to select don't exist.");
+  };
+
+  return q;
 });
