@@ -3,6 +3,17 @@
  */
 
 jQuery(document).ready(function($) {
+        //slider
+    $('.slider').slick({
+            dots:false,
+            slidesToScroll:1,
+            slidesToShow: 1,
+            prevArrow: $('.prev'),
+            nextArrow: $('.next'),
+            centerPadding:50,
+            centerMode: true,
+            verticalSwiping:false,
+    });
 
     // Mobile Header
     $(".hamburger").on("click", function() {

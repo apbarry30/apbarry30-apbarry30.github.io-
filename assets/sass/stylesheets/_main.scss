@@ -267,13 +267,16 @@ strong {
 .bg-white {
   background: $white;
 }
-
-.sites {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 40px;
-  grid-row-gap: 50px;
+.slick-track{
+  display:flex;
 }
+//
+//.sites {
+//  display: grid;
+//  grid-template-columns: 1fr 1fr;
+//  grid-column-gap: 40px;
+//  grid-row-gap: 50px;
+//}
 
 section.sites-section {
   .image-hover {
@@ -544,14 +547,44 @@ section.sites-section {
     @include hover-transition();
   }
 }
+.sites-section{
+  .container{
+    position: relative;
+  }
+}
+.arrows{
+  position: absolute;
+  left: unset;
+  bottom: 120px;
+}
 
+.next {
+  border: solid #4f4c9a;
+  border-width: 0 6px 6px 0;
+  display: inline-block;
+  padding: 6px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.prev {
+  border: solid #4f4c9a;
+  border-width: 0 6px 6px 0;
+  display: inline-block;
+  padding: 6px;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
 .portfolio-item {
-  max-height: 340px;
+  width:100%;
   overflow: hidden;
   position: relative;
   cursor: pointer;
   border-radius: 10px;
   border: 2px solid $accent;
+  max-width:1000px;
+  display:flex;
+  justify-content: center;
 
   &:nth-of-type(even) {
     transition-delay: 0.5s;
