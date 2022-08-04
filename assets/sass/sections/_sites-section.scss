@@ -1,4 +1,4 @@
-.sites-section{
+
   .rellax-circle{
     background:#acaad5;
     width: 40px;
@@ -8,5 +8,7 @@
       position: absolute;
       right: 20%;
     }
+    &.two{
+      right: 10%;
+    }
   }
-}

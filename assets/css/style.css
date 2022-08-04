@@ -25,7 +25,7 @@ STYLESHEETS
 
 .btn {
   padding: 15px 30px;
-  font-family: "Raleway", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   text-align: center;
   border: 2px solid transparent;
@@ -38,9 +38,66 @@ STYLESHEETS
   background: #A8A6D3;
 }
 
+.btn-flip {
+  opacity: 1;
+  outline: 0;
+  color: #fff;
+  border: 20px;
+  overflow: hidden;
+  line-height: 40px;
+  position: relative;
+  text-align: center;
+  letter-spacing: 1px;
+  display: inline-block;
+  text-decoration: none;
+  font-family: "Open Sans";
+  text-transform: uppercase;
+}
+.btn-flip:hover:after {
+  opacity: 1;
+  -webkit-transform: translateY(0) rotateX(0);
+          transform: translateY(0) rotateX(0);
+}
+.btn-flip:hover:before {
+  opacity: 0;
+  -webkit-transform: translateY(50%) rotateX(90deg);
+          transform: translateY(50%) rotateX(90deg);
+}
+.btn-flip:after {
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  color: #323237;
+  display: block;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  position: absolute;
+  background: #adadaf;
+  content: attr(data-back);
+  -webkit-transform: translateY(-50%) rotateX(90deg);
+          transform: translateY(-50%) rotateX(90deg);
+}
+.btn-flip:before {
+  top: 0;
+  left: 0;
+  opacity: 1;
+  color: #adadaf;
+  display: block;
+  padding: 0 30px;
+  line-height: 40px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  position: relative;
+  background: #323237;
+  content: attr(data-front);
+  -webkit-transform: translateY(0) rotateX(0);
+          transform: translateY(0) rotateX(0);
+}
+
 /* Set universal font sizes and styles here */
 h1, .h1 {
-  font-family: "Raleway", sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #A8A6D3;
   font-weight: bold;
   font-size: 80px;
@@ -49,7 +106,7 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  font-family: "Raleway", sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #696767;
   font-weight: 400;
   font-size: 40px;
@@ -58,7 +115,7 @@ h2, .h2 {
 }
 
 h3, .h3 {
-  font-family: "Raleway", sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #A8A6D3;
   font-weight: 700;
   font-size: 36px;
@@ -67,7 +124,7 @@ h3, .h3 {
 }
 
 h4, .h4 {
-  font-family: "Raleway", sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #696767;
   font-weight: 700;
   font-size: 28px;
@@ -76,7 +133,7 @@ h4, .h4 {
 }
 
 h5, .h5 {
-  font-family: "Raleway", sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #696767;
   font-weight: 400;
   font-size: 24px;
@@ -99,7 +156,7 @@ h6.uc, .h6.uc {
 
 p, .skills li {
   font-family: "Raleway", sans-serif;
-  color: #696767;
+  color: #fff;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
@@ -146,7 +203,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-synthesis: none;
-  font-family: "Raleway", sans-serif;
+  font-family: "Open Sans", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -435,9 +492,19 @@ section.sites-section .image-hover:hover {
   transition: all 0.4s ease-in-out;
 }
 
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 360px;
+  width: 100%;
+}
+
 .about-me-section {
-  font-family: "Raleway", sans-serif;
-  background-image: radial-gradient(circle at center, #899Dc4, #495D84);
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -450,12 +517,23 @@ section.sites-section .image-hover:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: radial-gradient(ellipse at bottom, #A8A6D3, #090a0f);
-  font-weight: 300;
+  background: #222;
 }
 
 .buttons {
   margin-top: 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 360px;
+  width: 100%;
+}
+
+.sig {
+  position: fixed;
+  top: 20px;
+  width: 50px;
+  right: 30px;
 }
 
 .all {
@@ -579,7 +657,7 @@ section.sites-section .image-hover:hover {
   transition: all 0.6s ease;
   width: 100%;
   height: 100%;
-  background-color: #1b2735;
+  background-color: #222;
   border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -658,10 +736,9 @@ section.sites-section .image-hover:hover {
   opacity: 0;
 }
 .port-popup.open {
-  z-index: 5;
   opacity: 100%;
   overflow: auto;
-  z-index: 10;
+  z-index: 20000;
   padding: 20px;
   background: white;
   width: 60%;
@@ -681,6 +758,9 @@ section.sites-section .image-hover:hover {
 }
 .port-popup.open .popup-inner .pop-info {
   margin-bottom: 40px;
+}
+.port-popup.open .popup-inner .pop-info p, .port-popup.open .popup-inner .pop-info .skills li, .skills .port-popup.open .popup-inner .pop-info li {
+  color: #222;
 }
 .port-popup.open .popup-inner .image {
   width: 50%;
@@ -728,6 +808,9 @@ section.sites-section .image-hover:hover {
   transition: all 0.4s ease-in-out;
 }
 
+.sites-section {
+  padding-top: 50px;
+}
 .sites-section .container, .sites-section .container-small {
   position: relative;
 }
@@ -735,10 +818,13 @@ section.sites-section .image-hover:hover {
 .arrows {
   position: absolute;
   left: unset;
+  z-index: 10000;
   bottom: 120px;
 }
 
 .next {
+  width: 30px;
+  height: 30px;
   border: solid #4f4c9a;
   border-width: 0 6px 6px 0;
   display: inline-block;
@@ -748,6 +834,8 @@ section.sites-section .image-hover:hover {
 }
 
 .prev {
+  width: 30px;
+  height: 30px;
   border: solid #4f4c9a;
   border-width: 0 6px 6px 0;
   display: inline-block;
@@ -762,7 +850,7 @@ section.sites-section .image-hover:hover {
   position: relative;
   cursor: pointer;
   border-radius: 10px;
-  border: 2px solid #A8A6D3;
+  border-inline: 6px solid #A8A6D3;
   max-width: 1000px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1038,7 +1126,7 @@ header .header-right .header-phone:hover svg path {
           background-clip: text;
   -webkit-transition: 0.5s linear;
   transition: 0.5s linear;
-  font-family: "Raleway", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 20px;
 }
 .nav-menu .container .menu-mobile-menu-container ul li a:hover, .nav-menu .container-small .menu-mobile-menu-container ul li a:hover {
@@ -1513,6 +1601,73 @@ footer .menu-footer-menu-container ul li:hover a {
   border-bottom: 4px solid #A8A6D3;
 }
 
+.hero-section {
+  position: relative;
+}
+.hero-section .arrow-container {
+  display: block;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) rotateZ(0deg);
+          transform: translate(-50%, -50%) rotateZ(0deg);
+}
+.hero-section .arrow-container:hover {
+  cursor: pointer;
+}
+.hero-section .arrow-container:hover .arrow {
+  top: 50%;
+}
+.hero-section .arrow-container:hover .arrow:before {
+  -webkit-transform: translate(-50%, -50%) rotateZ(-30deg);
+          transform: translate(-50%, -50%) rotateZ(-30deg);
+}
+.hero-section .arrow-container:hover .arrow:after {
+  -webkit-transform: translate(-50%, -50%) rotateZ(30deg);
+          transform: translate(-50%, -50%) rotateZ(30deg);
+}
+.hero-section .arrow {
+  position: absolute;
+  left: 50%;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.hero-section .arrow:before, .hero-section .arrow:after {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  content: "";
+  display: block;
+  position: absolute;
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+  background: #fff;
+  width: 4px;
+  height: 50px;
+  border-radius: 10px;
+  -webkit-transform: translate(-50%, -50%) rotateZ(-45deg);
+          transform: translate(-50%, -50%) rotateZ(-45deg);
+}
+.hero-section .arrow:after {
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+  -webkit-transform: translate(-50%, -50%) rotateZ(45deg);
+          transform: translate(-50%, -50%) rotateZ(45deg);
+}
+.hero-section .arrow:nth-child(1) {
+  opacity: 0.3;
+  top: 35%;
+}
+.hero-section .arrow:nth-child(2) {
+  opacity: 0.6;
+  top: 55%;
+}
+.hero-section .arrow:nth-child(3) {
+  opacity: 0.9;
+  top: 75%;
+}
+
 section.hero-section {
   overflow: hidden;
   border-bottom: 4px solid #A8A6D3;
@@ -1532,12 +1687,12 @@ section.hero-section .print {
       -ms-flex-pack: start;
           justify-content: flex-start;
   display: inline;
+  opacity: 0.4;
 }
 section.hero-section .print .printing {
   font-size: 25px;
   color: white;
   line-height: 1em;
-  opacity: 0.03;
   font-family: "Orbitron", monospace;
   position: relative;
 }
@@ -1643,15 +1798,18 @@ section.hero-section {
   margin-bottom: 0;
 }
 
-.sites-section .rellax-circle {
+.rellax-circle {
   background: #acaad5;
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
-.sites-section .rellax-circle.one {
+.rellax-circle.one {
   position: absolute;
   right: 20%;
+}
+.rellax-circle.two {
+  right: 10%;
 }
 
 /* +++++++++++++++++   Media Queries  ++++++++++++++++++++++ */
