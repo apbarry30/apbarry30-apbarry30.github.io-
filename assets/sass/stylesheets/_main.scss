@@ -20,7 +20,7 @@ body {
   font-family: $fontMain;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  //min-height: 100vh;
   overflow: auto;
   overscroll-behavior-y: none;
   background: #222;
@@ -322,10 +322,7 @@ section.sites-section {
   width: 100%;
 }
 .sig{
-  position: fixed;
-  top: 20px;
   width: 50px;
-  right: 30px;
 }
 .all {
   display: flex;
@@ -597,8 +594,15 @@ section.sites-section {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
 }
+.sites{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
 .portfolio-item {
-  width:100%;
+  width:48%;
+  margin-bottom: 20px;
   overflow: hidden;
   position: relative;
   cursor: pointer;

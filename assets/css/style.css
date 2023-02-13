@@ -25,7 +25,7 @@ STYLESHEETS
 
 .btn {
   padding: 15px 30px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 700;
   text-align: center;
   border: 2px solid transparent;
@@ -97,16 +97,27 @@ STYLESHEETS
 
 /* Set universal font sizes and styles here */
 h1, .h1 {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   color: #A8A6D3;
   font-weight: bold;
   font-size: 80px;
   line-height: 72px;
   letter-spacing: -0.04em;
+  margin-bottom: 0.25em;
+}
+h1 .massive, .h1 .massive {
+  font-size: 10rem;
+  font-weight: 900;
+  letter-spacing: -0.07em;
+  line-height: 0.77;
+  text-indent: -0.039em;
+}
+h1 .massive:first-of-type, .h1 .massive:first-of-type {
+  margin-left: 5px;
 }
 
 h2, .h2 {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   color: #696767;
   font-weight: 400;
   font-size: 40px;
@@ -115,7 +126,7 @@ h2, .h2 {
 }
 
 h3, .h3 {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   color: #A8A6D3;
   font-weight: 700;
   font-size: 36px;
@@ -124,7 +135,7 @@ h3, .h3 {
 }
 
 h4, .h4 {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   color: #696767;
   font-weight: 700;
   font-size: 28px;
@@ -133,7 +144,7 @@ h4, .h4 {
 }
 
 h5, .h5 {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   color: #696767;
   font-weight: 400;
   font-size: 24px;
@@ -142,12 +153,12 @@ h5, .h5 {
 }
 
 h6, .h6 {
-  font-family: "Raleway", sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  font-family: "Inter", sans-serif;
   color: #A8A6D3;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 19px;
-  letter-spacing: -0.02em;
+  line-height: 1.2em;
 }
 h6.uc, .h6.uc {
   text-transform: uppercase;
@@ -155,7 +166,7 @@ h6.uc, .h6.uc {
 }
 
 p, .skills li {
-  font-family: "Raleway", sans-serif;
+  font-family: "Inter", sans-serif;
   color: #fff;
   font-weight: 400;
   font-size: 20px;
@@ -183,6 +194,17 @@ p, .skills li {
   text-align: right;
 }
 
+@media only screen and (max-width: 775px) {
+  h1 .massive, .h1 .massive {
+    font-size: 8rem;
+  }
+  .about-me-section .container, .about-me-section .container-small {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
 /* ====================================================================================================================================
   BASE STYLES
   Styles in here are foundations: Button styling, universal form styling, section sizes, colors, container sizes, etc.
@@ -203,7 +225,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-synthesis: none;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -211,14 +233,11 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  min-height: 100vh;
   overflow: auto;
   overscroll-behavior-y: none;
   background: #222;
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 body::-webkit-scrollbar {
   display: none;
@@ -530,10 +549,7 @@ section.sites-section .image-hover:hover {
 }
 
 .sig {
-  position: fixed;
-  top: 20px;
   width: 50px;
-  right: 30px;
 }
 
 .all {
@@ -844,8 +860,23 @@ section.sites-section .image-hover:hover {
   -webkit-transform: rotate(135deg);
 }
 
+.sites {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .portfolio-item {
-  width: 100%;
+  width: 48%;
+  margin-bottom: 20px;
   overflow: hidden;
   position: relative;
   cursor: pointer;
@@ -912,11 +943,38 @@ section.sites-section .image-hover:hover {
           transform: translateX(-50%);
 }
 
+body.scrolled header {
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  padding: 10px;
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+          backdrop-filter: saturate(180%) blur(20px);
+  background-color: rgba(0, 0, 0, 0.2);
+  min-height: 80px;
+}
+body.scrolled header.text-white {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+body.scrolled.scrolled-up header {
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
 header {
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  padding: 50px 30px;
   z-index: 5;
   background-color: transparent;
 }
+header .sig {
+  position: relative;
+  z-index: 600;
+}
 header .logo {
+  z-index: 2000;
   width: 110px;
   height: 41px;
 }
@@ -927,6 +985,13 @@ header .logo svg {
 header .logo svg path {
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
+}
+header.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 500;
 }
 header .menu-main-menu-container ul {
   display: -webkit-box;
@@ -946,7 +1011,7 @@ header .menu-main-menu-container ul li.current-menu-item a {
 header .menu-main-menu-container ul li a {
   text-decoration: none;
   color: #696767;
-  font-family: "Raleway", sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -1040,7 +1105,7 @@ header .header-right .header-phone svg path {
   transition: all 0.4s ease-in-out;
 }
 header .header-right .header-phone a, header .header-right .header-phone a span {
-  font-family: "Raleway", sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 700;
   color: #A8A6D3;
   font-size: 16px;
@@ -1126,7 +1191,7 @@ header .header-right .header-phone:hover svg path {
           background-clip: text;
   -webkit-transition: 0.5s linear;
   transition: 0.5s linear;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 20px;
 }
 .nav-menu .container .menu-mobile-menu-container ul li a:hover, .nav-menu .container-small .menu-mobile-menu-container ul li a:hover {
@@ -1355,6 +1420,7 @@ header .header-right .header-phone:hover svg path {
 }
 
 .hamburger {
+  display: none;
   z-index: 100;
   -webkit-tap-highlight-color: transparent;
   background: #fff;
@@ -1367,9 +1433,6 @@ header .header-right .header-phone:hover svg path {
   position: fixed;
   top: -100px;
   width: 200px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1490,7 +1553,7 @@ footer .footer-top .footer-phone svg path {
   transition: all 0.4s ease-in-out;
 }
 footer .footer-top .footer-phone a {
-  font-family: "Raleway", sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 700;
   color: #A8A6D3;
   font-size: 16px;
@@ -1550,7 +1613,7 @@ footer .menu-footer-menu-container ul li a {
   padding: 0 20px;
   text-decoration: none;
   color: #696767;
-  font-family: "Raleway", sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -1578,11 +1641,9 @@ footer .menu-footer-menu-container ul li:hover a {
   position: relative;
   display: block;
   padding: 4px 0;
-  font-family: Raleway, sans-serif;
-  font-weight: bold;
   text-decoration: none;
   text-transform: uppercase;
-  -webkit-text-stroke: 2px var(--fill-color);
+  -webkit-text-stroke: 0.6px var(--fill-color);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0, var(--fill-color))) left/0 no-repeat;
   background: linear-gradient(var(--fill-color) 0 100%) left/0 no-repeat;
   color: transparent;
@@ -1591,6 +1652,9 @@ footer .menu-footer-menu-container ul li:hover a {
   -webkit-transition: 0.5s linear;
   transition: 0.5s linear;
   text-align: center;
+  margin-left: 35px;
+  margin-bottom: 20px;
+  font-size: 2em;
 }
 .fill-text:hover {
   letter-spacing: 0;
@@ -1758,7 +1822,7 @@ section.basic-hero-section {
 }
 section.basic-hero-section h1 {
   text-align: center;
-  font-family: "Raleway", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 52px;
   line-height: 68px;
   letter-spacing: 4.39px;
@@ -1831,7 +1895,6 @@ section.hero-section {
   header .menu-main-menu-container ul li a {
     font-size: 14px;
   }
-
   footer .menu-footer-menu-container ul li a {
     font-size: 14px;
   }
@@ -1843,15 +1906,12 @@ section.hero-section {
   h1, .h1 {
     font-size: 65px;
   }
-
   h2, .h2 {
     font-size: 33px;
   }
-
   h3, .h3 {
     font-size: 20px;
   }
-
   footer .container-large {
     padding: 50px 20px;
   }
@@ -1875,19 +1935,15 @@ section.hero-section {
   .container, .container-small {
     padding: 50px 20px;
   }
-
   .container-large {
     padding: 50px 20px;
   }
-
   .desktop {
     display: none;
   }
-
   .mobile {
     display: block !important;
   }
-
   header.container-large {
     padding: 10px 20px;
   }
@@ -1899,11 +1955,9 @@ section.hero-section {
   .visible-tablet {
     display: block !important;
   }
-
   .hidden-tablet {
     display: none !important;
   }
-
   footer .footer-bottom {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
@@ -1919,7 +1973,6 @@ section.hero-section {
   footer .footer-bottom .footer-copyright {
     text-align: center;
   }
-
   p, .skills li {
     font-size: 16px;
   }
@@ -1937,7 +1990,6 @@ section.hero-section {
   footer .copyright {
     margin-top: 20px;
   }
-
   .sites {
     -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
@@ -1952,11 +2004,9 @@ section.hero-section {
     display: -ms-flexbox !important;
     display: flex !important;
   }
-
   .hidden-mobile {
     display: none !important;
   }
-
   footer .content {
     -moz-flex-direction: column;
     -ms-flex-direction: column;

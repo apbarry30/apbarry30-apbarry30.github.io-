@@ -7,6 +7,17 @@ h1, .h1 {
   font-size: 80px;
   line-height: 72px;
   letter-spacing: -0.04em;
+  margin-bottom: 0.25em;
+  .massive{
+    font-size: 10rem;
+    font-weight: 900;
+    letter-spacing: -0.07em;
+    line-height: 0.77;
+    text-indent: -0.039em;
+    &:first-of-type{
+      margin-left: 5px;
+    }
+  }
 }
 
 h2, .h2 {
@@ -46,12 +57,12 @@ h5, .h5 {
 }
 
 h6, .h6 {
+  font-size: 1em;
+  font-weight: 400;
+  letter-spacing: 0.05em;
   font-family: $fontBody;
   color: $accent;
-  font-weight: $medium;
-  font-size: 14px;
-  line-height: 19px;
-  letter-spacing: -0.02em;
+  line-height: 1.2em;
   &.uc {
     text-transform: uppercase;
     letter-spacing: 0.03px;
@@ -85,4 +96,16 @@ p {
 }
 .ta-right {
   text-align: right;
+}
+@media only screen and (max-width: 775px){
+  h1, .h1{
+    .massive{
+      font-size: 8rem;
+    }
+  }
+  .about-me-section{
+    .container{
+      flex-direction: column;
+    }
+  }
 }

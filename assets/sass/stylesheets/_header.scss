@@ -1,9 +1,35 @@
 // Header styles
+body.scrolled {
+  header {
+    @include hover-transition();
+    padding: 10px;
+    backdrop-filter: saturate(180%) blur(20px);
+    //background-color: rgba(240, 244, 247, 0.5);
+    background-color: rgba(0,0,0,.2);
+    min-height: 80px;
+    &.text-white {
+      background-color: rgba(0,0,0,.2);
+    }
+  }
+  &.scrolled-up {
+    header {
+      @include hover-transition();
+      transform: translateY(0);
+    }
+  }
+}
 
 header {
+  @include hover-transition();
+  padding: 50px 30px;
   z-index: 5;
   background-color: transparent;
+  .sig{
+    position: relative;
+    z-index: 600;
+  }
   .logo {
+    z-index: 2000;
     width: 110px;
     height: 41px;
     svg {
@@ -13,6 +39,13 @@ header {
         @include hover-transition;
       }
     }
+  }
+  &.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 500;
   }
   .menu-main-menu-container {
     ul {
@@ -465,6 +498,7 @@ top: 188px;
 width: 46px;
 }
 .hamburger{
+  display: none;
 z-index: 100;
 -webkit-tap-highlight-color: transparent;
 background: #fff;
@@ -476,7 +510,7 @@ left: -100px;
 position: fixed;
 top: -100px;
 width: 200px;
-display: flex;
+//display: flex;
 justify-content: center;
 align-items: center;
 @include hover-transition();
