@@ -16,3 +16,9 @@
 //     devURL: yargs.url ? yargs.url : `${siteInstanceName}`,
 //   };
 // };
+var ghpages = require('gh-pages');
+
+ghpages.publish('dist', {
+    branch: 'portfolio',
+    repo: 'https://apbarry30.github.io'
+}, callback);
