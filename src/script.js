@@ -1289,6 +1289,7 @@ var getScrollPosition = (e) => {
     }
 }
 
+
 window.onscroll = getScrollPosition;
 //default JS Setting
 // var rellax = new Rellax('.rellax', {
