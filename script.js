@@ -1,7 +1,7 @@
 import * as THREE from '../apbarry30.github.io/node_modules/three'
 // import Globe from 'globe.gl';
 
-import 'mapbox-gl/dist/mapbox-gl.css';
+import '/mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl';
 import {featureFilter} from "mapbox-gl/dist/style-spec/index.es";
 
