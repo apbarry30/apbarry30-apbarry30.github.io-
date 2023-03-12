@@ -1,4 +1,3 @@
-import * as THREE from 'three'
 // import Globe from 'globe.gl';
 
 import 'mapbox-gl';

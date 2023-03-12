@@ -1,9 +1,6 @@
-import * as THREE from '/node_modules/three'
 
-
-import '/mapbox-gl/dist/mapbox-gl.css';
-import mapboxgl from 'mapbox-gl';
-import {featureFilter} from "mapbox-gl/dist/style-spec/index.es";
+// import mapboxgl from 'mapbox-gl';
+// import {featureFilter} from "mapbox-gl/dist/style-spec/index.es";
 
 
 // map.on('style.load', () => {

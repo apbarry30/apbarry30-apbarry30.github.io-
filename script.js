@@ -1,7 +1,3 @@
-import * as THREE from 'three'
-// import Globe from 'globe.gl';
-
-import 'mapbox-gl';
 
 import mapboxgl from 'mapbox-gl';
 import {featureFilter} from "mapbox-gl/dist/style-spec/index.es";
