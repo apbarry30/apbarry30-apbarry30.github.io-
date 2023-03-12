@@ -1,5 +1,5 @@
 // import mapboxgl from 'mapbox-gl';
-import {featureFilter} from "mapbox-gl/dist/style-spec/index.es";
+// import {featureFilter} from "mapbox-gl-gl/dist/style-spec/index.es";
 
 
 // map.on('style.load', () => {
