@@ -1,5 +1,5 @@
 //gul
-const env = require("./gulp-env")();
+// const env = require("./gulp-env")();
 
 module.exports = () => {
   const config = {
@@ -30,7 +30,7 @@ module.exports = () => {
       build: `${env.pluginBuildPath}/scripts/`,
     },
     images: {
-      source: `${env.srcPath}/images/**/*.{jpg,JPG,jpeg,JPEG,png,PNG,gif,GIF,svg}`,
+      source: `${env.srcPath}/assets/**/*.{jpg,JPG,jpeg,JPEG,png,PNG,gif,GIF,svg}`,
       build: `${env.buildPath}/images-render/`,
     },
     browserSync: {
