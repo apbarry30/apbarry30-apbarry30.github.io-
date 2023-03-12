@@ -790,6 +790,7 @@ section.sites-section .image-hover:hover {
   font-weight: bold;
 }
 .port-popup .x {
+  z-index: 10;
   position: absolute;
   left: 20px;
   top: 20px;
