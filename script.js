@@ -1,5 +1,4 @@
-
-import mapboxgl from 'mapbox-gl';
+// import mapboxgl from 'mapbox-gl';
 import {featureFilter} from "mapbox-gl/dist/style-spec/index.es";
 
 
