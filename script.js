@@ -1,4 +1,4 @@
-import * as THREE from 'three'
+import * as THREE from '../apbarry30.github.io/node_modules/three'
 // import Globe from 'globe.gl';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
