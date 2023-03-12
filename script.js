@@ -13,7 +13,7 @@ let map = null;
     container: 'map',
     style: 'mapbox://styles/mapbox/satellite-v9',
     projection: 'globe', // Display the map as a globe, since satellite-v9 defaults to Mercator
-    zoom: 2,
+    zoom: 2.5,
     minZoom: 2,
     center: [-45.37257355955616, -21.968033674683838],
 });
