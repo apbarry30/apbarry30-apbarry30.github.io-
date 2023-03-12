@@ -166,6 +166,3 @@ gulp.task(
 );
 
 // Change the default port
-ui: {
-  port: 8080
-}
