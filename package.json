@@ -1,46 +1,18 @@
 {
-  "name": "generic_starter",
-  "version": "1.0.0",
-  "description": "A generic starting structure for simple sites. This is also meant to be a good starting point for more complex sites that have different file structures. Feel free to augment and adopt to your situation.",
-  "main": "index.js",
-  "author": "Jeremy 'Jermbo' Lawson",
-  "license": "MIT",
+  "name": "threejs-journey-exercise",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "./node_modules/.bin/gulp",
-    "compile": "./node_modules/.bin/gulp compile-project"
+    "dev": "vite",
+    "build": "vite build"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
-    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
-    "@babel/preset-env": "^7.2.3",
-    "@babel/register": "^7.0.0",
-    "browser-sync": "^2.26.12",
-    "del": "^3.0.0",
-    "eslint": "^5.12.0",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^6.0.0",
-    "gulp-babel": "^8.0.0",
-    "gulp-changed": "^3.2.0",
-    "gulp-load-plugins": "^1.5.0",
-    "gulp-minify": "^3.1.0",
-    "gulp-notify": "^3.2.0",
-    "gulp-plumber": "^1.2.1",
-    "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-strip-comments": "^2.5.2",
-    "http-server": "^14.1.0",
-    "yargs": "^12.0.5"
+    "vite": "^4.0.4"
   },
   "dependencies": {
-    "gsap": "^3.11.4",
-    "gulp-concat": "^2.6.1",
-    "gulp-scss-combine": "^1.0.0",
-    "imagesloaded": "^5.0.0",
-    "isotope-layout": "^3.0.6",
-    "jquery": "^3.6.3",
-    "merge-stream": "^2.0.0",
-    "node-sass": "^4.14.1",
-    "rellax": "^1.12.1"
+    "globe.gl": "^2.26.12",
+    "mapbox-gl": "^2.12.1",
+    "three": "^0.148.0"
   }
 }

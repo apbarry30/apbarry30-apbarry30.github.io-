@@ -135,7 +135,7 @@ function custom_login() { ?>
         }
 
         #login h1 a, .login h1 a {
-            background-image: url(<?= get_template_directory_uri() ?>/images/OGK_Logo_White.svg);
+            background-image: url(<?= get_template_directory_uri() ?>/Users/amandabarry/Documents/04-local-server-final/apbarry30.github.io/images-2/OGK_Logo_White.svg);
             height: 65px;
             width: 320px;
             background-size: 320px 65px;

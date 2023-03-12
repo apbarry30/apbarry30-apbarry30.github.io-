@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04 - Local Server</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
+  <script type="module" crossorigin src="./assets/index-c4dc13ac.js"></script>
+  <link rel="stylesheet" href="./assets/index-c71b4e3b.css">
+</head>
+<body>
+<header class="fixed-top">
+    <div class="header-container">
+        <!--        blobby nav-->
+        <!--        Swinging Panel Menu-->
+        <!--        fold out mobile menu-->
+        <!--        circle menu-->
+        <!--        Hover Fill Text-->
+        <!--        lavalamp-->
+        <!--        Off-Canvas menu on pure-->
+        <!--        the circular menu-->
+        <!--        Futuristic 3D Hover Effect-->
+
+        <div class="nav-menu">
+            <div class="container">
+                <nav>
+                    <ul class="menu">
+                        <li class="animate home active ta-center">
+                            Home
+                        </li>
+                        <li class="animate about ta-center">
+                            About
+                        </li>
+                        <li class="animate resume ta-center">
+                            Resume
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="sig">
+            <a href="https://amandabarry.me">
+                <img src="../images-2/my-logo.svg" alt="">
+            </a>
+        </div>
+    </div>
+    <div class="map-web-gl">
+        <div id="map"></div>
+        <button id="btn-spin">Start rotation</button>
+        <div class="back-wrap back" style="display: none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10.416" height="19.417" viewBox="0 0 10.416 19.417">
+                <path id="Path_289" data-name="Path 289" d="M0,0,9.355,9.355,18.709,0" transform="translate(10.062 0.354) rotate(90)" fill="none" stroke="#fff" stroke-width="1"/>
+            </svg>
+            <div class="back" id="back">
+            </div>
+        </div>
+
+        <div class="popup" id="popup">
+            <h2 class="title"></h2>
+            <p class="subtitle" style="text-transform: uppercase;"></p>
+            <p class="coming-soon" style="text-transform: uppercase; font-weight: 500;">Project Gallery Coming Soon</p>
+            <div class="popup-inner">
+                <div class="slider images" id="slider">
+
+                </div>
+                <div class="prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="9.956" height="17.085" viewBox="0 0 9.956 17.085">
+                        <path id="Path_58115" data-name="Path 58115" d="M0,0,7.835,7.835,15.67,0" transform="translate(9.249 0.707) rotate(90)" fill="none" stroke="#fff" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="next">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="9.957" height="17.085" viewBox="0 0 9.957 17.085">
+                        <path id="Path_58116" data-name="Path 58116" d="M0,7.835,7.835,0,15.67,7.835" transform="translate(8.542 0.707) rotate(90)" fill="none" stroke="#fff" stroke-width="2"/>
+                    </svg>
+
+                </div>
+            </div>
+            <p class="popup-text" style="font-weight: 300;"></p>
+            <div class="journal-images" style="max-width: 456px">
+                <a class="image journal-read" href="" style="display: flex; margin-right: 10px">
+                    <img src="" alt="journal-read">
+                </a>
+                <a class="image what-we-do" href="/what-we-do/" style="display: flex;">
+                    <img src="./assets/what-we-do-c5438d00.jpg" alt="what-we-do">
+                </a>
+            </div>
+
+        </div>
+
+        <div class="continent-wrap">
+            <div class="current-continent">
+                <div class="continent-name">
+                    <h2 class="continent" style="white-space: nowrap">South America</h2>
+                </div>
+            </div>
+            <div class="continents">
+                <div class="continent-name">
+                    <h2 class="continent" id="europe">Europe</h2>
+                    <p style="display: none">The Iberian Peninsula harbors about 50% of European plant and terrestrial vertebrate species and more than 30% of European endemic species. It is also home to the most endangered cat in the world, the Iberian lynx (Lynx pardinus). For more information on conservation work being carried out there, visit <a href="https://www.cbd-habitat.com/" target="_blank">cbd-habitat</a> and <a href="https://lifelynxconnect.eu/" target="_blank">lifelynxconnect</a>.</p>
+                </div>
+                <div class="continent-name active">
+                    <h2 class="continent" id="south-america">South America</h2>
+                    <p style="display: none">This region houses around 50% of all the species in the planet, more than a quarter of Earth´s forests, and thousands of rich coastal hotspots teeming with marine life, among other global wonders.</p>
+                </div>
+            </div>
+            <div class="continent-info">
+                <p style="font-weight: 500;">Why is this location important for animal conservation?</p>
+                <p class="swap-text" style="font-weight: 300;">
+                    This region houses around 50% of all the species in the planet, more than a quarter of Earth´s forests, and thousands of rich coastal hotspots teeming with marine life, among other global wonders.</p>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript" src="./slick.min.js"></script>
+
+    <!--    <script src="//unpkg.com/globe.gl"></script>-->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            color:#fff;
+            font-family: Helvetica Neue,Arial,Helvetica,sans-serif;
+            font-size:15px;
+            letter-spacing: .02em;
+            overflow-x: hidden;
+            background: #000;
+        }
+        .map-web-gl {
+            color:#fff;
+            position: relative;
+            height: calc( 100vh - 100px );
+        }
+        .map-web-gl img{
+            max-width: 100%;
+        }
+        .map-web-gl h2{
+            color:#fff;
+            font-size: 30px;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+            letter-spacing: .02em;
+        }
+        .map-web-gl p{
+            color:#fff;
+            font-size: 15px;
+            line-height: 1.5em;
+            letter-spacing: .05em;
+            margin: 0;
+        }
+        .map-web-gl a{
+            color:#fff;
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 1.2em;
+            letter-spacing: .05em;
+            text-decoration: none;
+            transition: 0.4s ease-in-out;
+        }
+        .map-web-gl a:hover{
+            opacity: 0.75;
+            transition: 0.4s ease-in-out;
+        }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+
+        .mapboxgl-ctrl-bottom-right, .mapboxgl-ctrl-bottom-left{
+            display: none;
+        }
+        .back-wrap  {
+            font: bold 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            color: #fff;
+            position: absolute;
+            top: 20px;
+            left: 50px;
+            z-index: 1;
+            border: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 300;
+            font-size: 15px;
+            text-transform: uppercase;
+            transition: 0.4s ease-in-out;
+        }
+        .back-wrap svg path{
+            transition: 0.4s ease-in-out;
+        }
+        .back-wrap:hover svg path{
+            stroke-width: 2;
+            transition: 0.4s ease-in-out;
+        }
+        .back-wrap svg{
+            margin-right: 20px;
+        }
+        .back-wrap:hover{
+            transition: 0.4s ease-in-out;
+            font-weight: bold;
+        }
+        #btn-spin:hover {
+            background-color: #4ea0da;
+        }
+        .flex{
+            display: flex;
+        }
+        .continent-wrap{
+            width:20vw;
+            height: auto;
+            position: absolute;
+            left: 5%;
+            top: 10%;
+            color: white;
+            background: #1A1818;
+        }
+        .continent-info p.swap-text{
+            margin-bottom: 0;
+        }
+        .continent-info p.swap-text a{
+            font-weight: 500;
+        }
+        .continent-name.active{
+            display: none;
+        }
+        .current-continent .continent-name{
+            padding:17px 45px 17px 45px;
+            background: #1A1818;
+            /* max-width: fit-content; */
+        }
+        .current-continent .continent-name.active{
+            display: flex;
+            /* max-width: 50%; */
+            width: fit-content;
+        }
+        .continent-info{
+            padding: 45px;
+            background: #1A1818;
+        }
+        .continent-info p{
+            margin-bottom: 30px;
+        }
+        .continents .continent.active{
+            display: none;
+        }
+        .continents{
+            position: absolute;
+            top: 0;
+            right: 0;
+            /* max-width: 50%; */
+            background: black;
+            /* width: fit-content; */
+            padding:17px 45px 17px 45px;
+            transition: 0.4s ease-in-out;
+        }
+        .continents:hover{
+            transition: 0.4s ease-in-out;
+        }
+        h2.continent{
+            margin-bottom: 0;
+        }
+        .continents{
+            cursor: pointer;
+            left: 44%;
+        }
+        .continents .continent-name{
+            cursor:pointer;
+            transition: 0.4s ease-in-out;
+        }
+
+        h2.continent{
+            font-size: 17px;
+        }
+        .continents h2{
+            opacity: 27%;
+            font-size: 17px;
+            white-space: nowrap;
+        }
+
+        .continents:hover{
+            transition: 0.4s ease-in-out;
+            background: #1A1818;
+        }
+        .marker{
+            opacity: 0;
+            width:0;
+            height: 0;
+        }
+
+        /*.marker.initial{*/
+        /*    display: flex;*/
+        /*    justify-content: center;*/
+        /*    align-items: center;*/
+        /*    height: auto;*/
+        /*    width: 20px;*/
+        /*    opacity: 100%;*/
+        /*    z-index: 2;*/
+        /*}*/
+        .marker.initial img{
+            width: 30px;
+        }
+        .marker.visible{
+            width:52.26px;
+            height: 69.75px;
+            opacity: 100%;
+            z-index: 2;
+        }
+        .popup{
+            background: #222;
+            transition: 0.4s ease-in-out;
+            position: absolute;
+            right: 0;
+            width: 0;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .popup.open{
+            transition: 0.4s ease-in-out;
+            width: 50vw;
+            max-width: 590px;
+            overflow-y: auto;
+            z-index: 4;
+            padding: 80px;
+        }
+        .popup-text{
+            display: none;
+        }
+        .popup.open .popup-text{
+            opacity: 100%;
+        }
+        .popup .journal-images{
+            display: none;
+        }
+        .popup .journal-images .image{
+            transition: 0.4s ease-in-out;
+        }
+
+        .popup.open .journal-images{
+            margin-top: 30px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .popup.open .journal-images .image:hover{
+            transition: 0.4s ease-in-out;
+            opacity: 0.75;
+        }
+
+        .popup-inner{
+            display: none;
+            position: relative;
+        }
+        .slick-arrow{
+            position:absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .slick-arrow.prev{
+            left: -16px;
+            cursor: pointer;
+        }
+        .slick-arrow.next{
+            right:-15px;
+            cursor: pointer;
+        }
+
+        .initialPlace{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 	53px;
+            height: 70px;
+        }
+        .initialPlace:hover{
+            z-index: 2;
+        }
+        .initialPlace:hover img{
+            z-index: 3;
+        }
+        .initialPlace:hover .place-data{
+            font-size: 14px;
+            transition: 0.4s ease-in-out;
+            z-index: 2;
+        }
+        .initialPlace img{
+            margin-left: -13px;
+            margin-top: -10px;
+            z-index: 3;
+        }
+        .initialPlace .place-data{
+            transition: 0.4s ease-in-out;
+            width: fit-content;
+            white-space: nowrap;
+            height: 30px;
+            opacity: 100%;
+            background:#1A1818;
+            border-radius: 3.46px;
+            display: flex;
+            padding: 0 20px;
+            justify-content: center;
+            align-items: center;
+            z-index: -1;
+            left: 77%;
+            top: 8px;
+
+
+            /*min-width: 120px;*/
+        }
+        .initialPlace.hidden{
+            width: 0;
+            height: 0;
+            opacity: 0;
+        }
+        .initialPlace .place-data{
+            color: #fff;
+            opacity: 100%;
+            text-decoration: none;
+            position: absolute;
+        }
+        .initialPlace.hidden .place-data{
+            display: none;
+        }
+        .initialPlace.hidden img{
+            display: none;
+        }
+        .animal.marker, .animal img{
+            width: 0;
+            height: 0;
+            opacity: 0;
+        }
+        .animal.name.visible{
+
+        }
+        .animal .animal{
+            opacity: 0;
+            display: none;
+        }
+
+        .animal.name.visible .animal{
+            color: #fff;
+            opacity: 100%;
+            text-decoration: none;
+
+            position: absolute;
+            width: fit-content;
+            height: 30px;
+            padding: 0 20px;
+
+            background:#1A1818;
+            border-radius: 3.46px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            left: 80%;
+            top: 12%;
+            z-index: -1;
+        }
+        .animal.name.visible img{
+            width: 100%;
+            height: 100%;
+            opacity: 100%;
+            margin-left: -4px;
+        }
+        .animal.marker.visible{
+            opacity: 100%;
+            width: 50px;
+            height: auto;
+        }
+        .slick-track{
+            max-height: 238px;
+            overflow: hidden;
+            min-width:1200px;
+        }
+        .slider{
+            margin:40px 0 30px;
+        }
+        .slick-slide{
+            margin: 0 5px;
+        }
+        .prev svg path, .next svg path{
+            box-shadow: black 0 3px 6px;
+        }
+        #aguapey-river-basin, #lago-la-plata, #peninsula-valdes, #bahia-lomas{
+            display: none !important;
+        }
+        .coming-soon{
+            display: none;
+            padding: 40px 0;
+        }
+        .aguapey-river-basin.coming-soon, .lago-la-plata.coming-soon, .peninsula-valdes.coming-soon, .bahia-lomas.coming-soon{
+            display: flex;
+        }
+        @media only screen and (max-width: 1950px){
+            .continents{
+                left: unset;
+                right: 0;
+            }
+        }
+        @media only screen and (max-width: 1750px){
+            .continent-info{
+                padding: 40px;
+            }
+            .continents{
+                padding: 17px 40px;
+            }
+            .current-continent .continent-name{
+                padding: 17px 40px;
+            }
+        }
+        @media only screen and (max-width: 1630px){
+            .continent-wrap{
+                min-width: 304px;
+            }
+            .continent-info{
+                padding: 35px;
+            }
+            .continents{
+                padding: 17px 35px;
+            }
+            .current-continent .continent-name{
+                padding: 17px 35px;
+            }
+        }
+        @media only screen and (max-width:1440px){
+            .continent-wrap{
+                top: 5%;
+            }
+            .continent-info{
+                padding: 30px;
+            }
+            .continent-info p{
+               margin-bottom: 20px;
+            }
+            .current-continent .continent-name{
+                padding: 15px 30px;
+            }
+            .continents {
+                padding:15px 30px;
+            }
+            .coming-soon{
+                padding: 30px 0;
+            }
+            .popup.open{
+                padding: 60px;
+            }
+        }
+        @media only screen and (max-width:991px){
+            h2.continent{
+                font-size: 15px;
+            }
+            p{
+                font-size: 14px;
+            }
+            .continent-wrap {
+                min-width: 264px;
+                left: 3.5vw;
+                top: 3.5vw;
+            }
+            .continent-info{
+                padding: 20px;
+            }
+            .continent-info p{
+               margin-bottom: 10px;
+            }
+            .current-continent .continent-name{
+                padding: 15px 20px;
+                /* max-width: 50%; */
+            }
+            .continents {
+                padding:15px 20px;
+            }
+            .popup.open{
+                padding: 50px 30px;
+            }
+        }
+
+        @media only screen and (max-width: 769px){
+
+            .map-web-gl {
+                margin-top: 100px;
+            }
+        }
+
+        @media only screen and (max-width: 600px){
+            .continent-wrap{
+                right: 3.5vw;
+                width: fit-content;
+                max-width: calc(100% - 7vw);
+            }
+            h2.continent{
+                font-size: 14px;
+            }
+            .back-wrap{
+                width: 100%;
+                top: 0;
+                max-width: calc(100vw - 50px);
+                background: #1A1818;
+                justify-content: flex-start;
+                left: 0;
+                padding: 10px 25px;
+                z-index: 11;
+            }
+            .coming-soon{
+                padding: 25px 0;
+            }
+            .popup{
+                width: 100%;
+                height: 0;
+                min-height: 70px;
+                padding: 0;
+                opacity: 0;
+                transition: 0.4s ease-in-out;
+            }
+            .popup-text{
+                opacity: 0;
+                transition: 0.4s ease-in-out;
+            }
+            .popup.open .popup-text{
+                opacity: 100%;
+                transition: 0.4s ease-in-out;
+            }
+            .popup.open{
+                transition: 0.4s ease-in-out;
+                opacity: 100%;
+                display: flex;
+                height: auto;
+                overflow-x: hidden;
+                overflow-y: auto;
+                max-width: calc(100vw - 50px);
+                width: 100%;
+                padding: 70px 25px 25px 25px;
+            }
+            .current-continent{
+                width: 50%;
+            }
+             .current-continent .continent-name{
+                width: 100%;
+            }
+            .continents{
+                width: 40%;
+                text-align: center;
+            }
+            .continent-info p.swap-text{
+                font-size: 13px;
+            }
+            .continent-info p.swap-text a{
+                  font-size: 13px;
+              }
+
+        }
+        @media only screen and (max-width: 300px){
+            h2.continent{
+                font-size: 12px;
+            }
+        }
+
+        footer {display:none}
+    </style>
+</body>
+</html>

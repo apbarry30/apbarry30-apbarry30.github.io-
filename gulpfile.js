@@ -111,7 +111,7 @@ const Jobs = (function() {
     gulp.watch(config.styles.mainSource, gulp.series(Tasks.compileStyles));
     gulp.watch(config.scripts.source, gulp.series(Tasks.compileScripts, Server.reload));
     gulp.watch(config.html.source, gulp.series(Server.reload));
-    //gulp.watch(config.images.source, gulp.series(Tasks.compileImages, Server.reload));
+    //gulp.watch(config.images-2.source, gulp.series(Tasks.compileImages, Server.reload));
     // setting up plugin specific watchers
     gulp.watch(config.pluginHTML.source, gulp.series(Server.reload));
     gulp.watch(config.pluginScripts.source, gulp.series(Tasks.compilePluginScripts, Server.reload));
