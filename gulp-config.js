@@ -1,5 +1,5 @@
 //gul
-// const env = require("./gulp-env")();
+const env = require("./gulp-env")();
 
 module.exports = () => {
   const config = {
