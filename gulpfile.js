@@ -86,7 +86,7 @@ const Server = (function() {
   }
 
   function start(next) {
-    if (env.devURL == "./") {
+    if (env.devURL == "/") {
       config.browserSync["server"] = {
         baseDir: `${env.buildPath}/`,
       };
