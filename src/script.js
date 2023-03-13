@@ -20,6 +20,8 @@ let map = null;
 });
 
 map.on('load', () => {
+        map.resize();
+
 
     map.touchZoomRotate.enable({around: 'center'});
 
